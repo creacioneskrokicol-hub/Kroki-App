@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Productos | Krokicol</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tu CSS principal -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- ==================================================
+         ESTILOS DEL CARRUSEL
+         Por ahora están aquí para no tocar style.css.
+    =================================================== -->
+
+    <style>
+
+        /* ================================
+           PÁGINA
+        ================================= */
+
+        .catalog-page {
+            min-height: calc(100vh - 80px);
+            background: #080808;
+            padding: 70px 5% 100px;
+            overflow-x: hidden;
+        }
+
+
+        /* ================================
+           ENCABEZADO
+        ================================= */
+
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .catalog-header .red-text {
+            color: #ff3025;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .catalog-header h1 {
+            font-family: "Anton", sans-serif;
+            font-size: clamp(60px, 8vw, 100px);
+            line-height: 0.9;
+            margin: 10px 0 15px;
+        }
+
+        .catalog-header p:last-child {
+            color: #888;
+            font-size: 14px;
+        }
+
+
+        /* ================================
+           BOTONES DE CATEGORÍA
+        ================================= */
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .category-buttons a {
+            padding: 10px 22px;
+            border: 1px solid #333;
+            border-radius: 30px;
+            color: white;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .category-buttons a:hover {
+            background: #ff3025;
+            border-color: #ff3025;
+        }
+
+        .category-buttons a.active {
+            background: #ff3025;
+            border-color: #ff3025;
+        }
+
+
+        /* ================================
+           CARRUSEL
+        ================================= */
+
+        .carousel-area {
+            width: 100%;
+            max-width: 1300px;
+            height: 430px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-window {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+
+        /* ================================
+           TARJETAS
+        ================================= */
+
+        .slide {
+            position: absolute;
+
+            width: 270px;
+            height: 360px;
+
+            left: 50%;
+            top: 30px;
+
+            transform:
+                translateX(-50%)
+                scale(0.65);
+
+            opacity: 0;
+
+            background: #151515;
+
+            border: 1px solid #292929;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.6s ease,
+                opacity 0.6s ease,
+                filter 0.6s ease;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.5);
+        }
+
+
+        /* ================================
+           PRODUCTO CENTRAL
+        ================================= */
+
+        .slide.active {
+            opacity: 1;
+
+            z-index: 5;
+
+            transform:
+                translateX(-50%)
+                scale(1);
+
+            filter: brightness(1);
+        }
+
+
+        /* ================================
+           PRODUCTO IZQUIERDO
+        ================================= */
+
+        .slide.previous {
+            opacity: 0.45;
+
+            z-index: 3;
+
+            transform:
+                translateX(calc(-50% - 330px))
+                scale(0.72);
+
+            filter: brightness(0.4);
+        }
+
+
+        /* ================================
+           PRODUCTO DERECHO
+        ================================= */
+
+        .slide.next {
+            opacity: 0.45;
+
+            z-index: 3;
+
+            transform:
+                translateX(calc(-50% + 330px))
+                scale(0.72);
+
+            filter: brightness(0.4);
+        }
+
+
+        /* ================================
+           IMAGEN / PLACEHOLDER
+        ================================= */
+
+        .slide-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #151515;
+
+    overflow: hidden;
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+        /* ================================
+           INFORMACIÓN DENTRO DE TARJETA
+        ================================= */
+
+        .slide-info {
+            position: absolute;
+
+            left: 22px;
+            right: 22px;
+            bottom: 20px;
+
+            z-index: 2;
+        }
+
+        .slide-info::before {
+            content: "";
+
+            position: absolute;
+
+            left: -22px;
+            right: -22px;
+            bottom: -20px;
+
+            height: 150px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.95)
+                );
+
+            z-index: -1;
+        }
+
+        .slide-reference {
+            color: #ff3025;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+        .slide-info h3 {
+            font-size: 22px;
+
+            margin-top: 4px;
+        }
+
+
+        /* ================================
+           FLECHAS
+        ================================= */
+
+        .carousel-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            z-index: 20;
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            border: 1px solid #444;
+
+            background: #111;
+
+            color: white;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .carousel-arrow:hover {
+            background: #ff3025;
+
+            border-color: #ff3025;
+
+            transform:
+                translateY(-50%)
+                scale(1.1);
+        }
+
+        .arrow-left {
+            left: 2%;
+        }
+
+        .arrow-right {
+            right: 2%;
+        }
+
+
+        /* ================================
+           INFORMACIÓN DEL PRODUCTO
+        ================================= */
+
+        .selected-product {
+            text-align: center;
+
+            margin-top: 10px;
+        }
+
+        .selected-reference {
+            color: #ff3025;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+        .selected-product h2 {
+            font-family: "Anton", sans-serif;
+
+            font-size: 40px;
+
+            line-height: 1;
+
+            margin: 8px 0;
+        }
+
+        .selected-description {
+            color: #888;
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .selected-price {
+            display: block;
+
+            font-size: 24px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* ================================
+           BOTÓN CONSULTAR
+        ================================= */
+
+        .consult-button {
+            display: inline-block;
+
+            background: #ff3025;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .consult-button:hover {
+            background: white;
+
+            color: #ff3025;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* ================================
+           PUNTOS
+        ================================= */
+
+        .dots {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #444;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            width: 25px;
+
+            border-radius: 10px;
+
+            background: #ff3025;
+        }
+
+        /* ================================
+   ZOOM DE PRODUCTO
+================================ */
+
+.zoom-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    padding: 40px;
+}
+
+.zoom-modal.active {
+    display: flex;
+}
+
+.zoom-content {
+    width: 90vw;
+    height: 85vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    cursor: grab;
+}
+
+.zoom-content:active {
+    cursor: grabbing;
+}
+
+.zoom-content img {
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    transform-origin: center;
+
+    transition: transform 0.15s ease;
+
+    user-select: none;
+
+    cursor: default;
+
+    touch-action: none;
+}
+
+.zoom-close {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 1px solid #555;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s;
+}
+
+.zoom-close:hover {
+    background: #ff3025;
+
+    border-color: #ff3025;
+}
+
+.zoom-controls {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 10px 18px;
+
+    border-radius: 40px;
+
+    background: #111;
+
+    border: 1px solid #333;
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #ff3025;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.zoom-controls button:hover {
+    background: white;
+
+    color: #ff3025;
+}
+
+.zoom-controls span {
+    color: white;
+
+    font-size: 16px;
+}
+
+/* ================================
+   ZOOM DE PRODUCTO
+================================ */
+
+.zoom-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    padding: 40px;
+}
+
+.zoom-modal.active {
+    display: flex;
+}
+
+.zoom-content {
+    width: 90vw;
+    height: 85vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    cursor: grab;
+}
+
+.zoom-content:active {
+    cursor: grabbing;
+}
+
+.zoom-content img {
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    transform-origin: center;
+
+    transition: transform 0.2s ease;
+
+    user-select: none;
+}
+
+.zoom-close {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 1px solid #555;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s;
+}
+
+.zoom-close:hover {
+    background: #ff3025;
+
+    border-color: #ff3025;
+}
+
+.zoom-controls {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 10px 18px;
+
+    border-radius: 40px;
+
+    background: #111;
+
+    border: 1px solid #333;
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #ff3025;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.zoom-controls button:hover {
+    background: white;
+
+    color: #ff3025;
+}
+
+.zoom-controls span {
+    color: white;
+
+    font-size: 16px;
+}
+
+        /* ================================
+           CELULAR
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            .catalog-page {
+                padding: 60px 3% 80px;
+            }
+
+            .carousel-area {
+                height: 390px;
+            }
+
+            .slide {
+                width: 220px;
+                height: 320px;
+            }
+
+            .slide.previous {
+                transform:
+                    translateX(calc(-50% - 150px))
+                    scale(0.55);
+
+                opacity: 0.2;
+            }
+
+            .slide.next {
+                transform:
+                    translateX(calc(-50% + 150px))
+                    scale(0.55);
+
+                opacity: 0.2;
+            }
+
+            .carousel-arrow {
+                width: 45px;
+                height: 45px;
+
+                font-size: 20px;
+            }
+
+            .arrow-left {
+                left: 0;
+            }
+
+            .arrow-right {
+                right: 0;
+            }
+
+            .selected-product h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body id="productos-page">
+
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            KROKICOL
+        </a>
+
+        <nav class="navbar">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="index.html#productos">
+    Productos
+</a>
+
+            <a href="index.html#nosotros">
+                Nosotros
+            </a>
+
+            <a href="index.html#contacto">
+                Contacto
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================================================
+         CATÁLOGO
+    =================================================== -->
+
+    <main class="catalog-page">
+
+
+        <!-- ENCABEZADO -->
+
+        <section class="catalog-header">
+
+            <p class="red-text">
+                COLECCIÓN KROKICOL
+            </p>
+
+            <h1 id="category-title">
+                PRODUCTOS
+            </h1>
+
+            <p id="category-description">
+                Descubre nuestra colección.
+            </p>
+
+        </section>
+
+
+        <!-- CATEGORÍAS -->
+
+        <nav class="category-buttons" id="categorias">
+
+            <a href="productos.html?categoria=baby"
+               data-category="baby">
+                Baby
+            </a>
+
+            <a href="productos.html?categoria=nino"
+               data-category="nino">
+                Niño
+            </a>
+
+            <a href="productos.html?categoria=juvenil"
+               data-category="juvenil">
+                Juvenil
+            </a>
+
+            <a href="productos.html?categoria=dama"
+               data-category="dama">
+                Dama
+            </a>
+
+            <a href="productos.html?categoria=hombre"
+               data-category="hombre">
+                Hombre
+            </a>
+
+            <a href="productos.html?categoria=otros"
+               data-category="otros">
+                Otros
+            </a>
+
+        </nav>
+
+
+        <!-- ==================================================
+             CARRUSEL
+        =================================================== -->
+
+        <section class="carousel-area">
+
+
+            <!-- FLECHA IZQUIERDA -->
+
+            <button
+                class="carousel-arrow arrow-left"
+                id="previous-button">
+
+                ←
+
+            </button>
+
+
+            <!-- VENTANA -->
+
+            <div class="carousel-window">
+
+                <div
+                    class="carousel-track"
+                    id="carousel-track">
+
+                </div>
+
+            </div>
+
+
+            <!-- FLECHA DERECHA -->
+
+            <button
+                class="carousel-arrow arrow-right"
+                id="next-button">
+
+                →
+
+            </button>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             INFORMACIÓN DEL PRODUCTO
+        =================================================== -->
+
+        <section class="selected-product">
+
+            <p
+                class="selected-reference"
+                id="selected-reference">
+
+                REF-001
+
+            </p>
+
+
+            <h2 id="selected-name">
+
+                PRODUCTO
+
+            </h2>
+
+
+            <p
+                class="selected-description"
+                id="selected-description">
+
+                Descripción del producto.
+
+            </p>
+
+
+            <strong
+                class="selected-price"
+                id="selected-price">
+
+                $XX.XXX
+
+            </strong>
+
+
+            <a
+                href="#"
+                class="consult-button"
+                id="consult-button">
+
+                CONSULTAR PRODUCTO
+
+            </a>
+
+        </section>
+
+
+        <!-- PUNTOS -->
+
+        <div
+            class="dots"
+            id="dots">
+
+        </div>
+
+        <!-- ================================
+     VENTANA DE ZOOM
+================================ -->
+
+<div class="zoom-modal" id="zoom-modal">
+
+    <button class="zoom-close" id="zoom-close">
+        ✕
+    </button>
+
+<button class="zoom-prev" id="zoom-prev">←</button>
+
+    <div class="zoom-content">
+
+        <img
+            id="zoom-image"
+            src=""
+            alt="Producto Krokicol">
+
+    </div>
+
+<button class="zoom-next" id="zoom-next">→</button>
+
+    <div class="zoom-controls">
+
+        <button id="zoom-out">
+            −
+        </button>
+
+        <span>
+            🔍
+        </span>
+
+        <button id="zoom-in">
+            +
+        </button>
+
+    </div>
+
+</div>
+
+    </main>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="productos.js"></script>
+
+<script>
+
+    /* =========================
+       OBTENER CATEGORÍA DE LA URL
+    ========================= */
+
+    const parametros = new URLSearchParams(
+        window.location.search
+    );
+
+        let categoria =
+            parametros.get("categoria");
+
+
+        if (!productos[categoria]) {
+            categoria = "baby";
+        }
+
+
+        /* ================================================
+           VARIABLES
+        ================================================= */
+
+        const listaProductos =
+            productos[categoria];
+
+        let productoActual = 0;
+
+
+        const track =
+            document.getElementById(
+                "carousel-track"
+            );
+
+        const dots =
+            document.getElementById(
+                "dots"
+            );
+
+
+        /* ================================================
+           TÍTULO
+        ================================================= */
+
+        document.getElementById(
+            "category-title"
+        ).textContent =
+            nombresCategorias[categoria];
+
+
+        document.getElementById(
+            "category-description"
+        ).textContent =
+            descripciones[categoria];
+
+
+        /* ================================================
+           MARCAR CATEGORÍA ACTIVA
+        ================================================= */
+
+        document.querySelectorAll(
+            ".category-buttons a"
+        ).forEach(boton => {
+
+            if (
+                boton.dataset.category === categoria
+            ) {
+
+                boton.classList.add("active");
+
+            }
+
+        });
+
+
+        /* ================================================
+           CREAR TARJETAS
+        ================================================= */
+
+        function crearTarjetas() {
+
+            track.innerHTML = "";
+
+            dots.innerHTML = "";
+
+
+            listaProductos.forEach(
+                (producto, index) => {
+
+
+                    const tarjeta =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    tarjeta.className =
+                        "slide";
+
+
+                    tarjeta.innerHTML = `
+
+    <div class="slide-image">
+
+        <img
+            src="${producto.imagen}"
+            alt="${producto.nombre}">
+
+    </div>
+
+    <div class="slide-info">
+
+        <span class="slide-reference">
+            ${producto.referencia}
+        </span>
+
+        <h3>
+            ${producto.nombre}
+        </h3>
+
+    </div>
+
+`;
+
+
+     tarjeta.addEventListener(
+    "click",
+    () => {
+
+        if (index === productoActual) {
+
+            abrirZoom();
+
+        } else {
+
+            productoActual = index;
+
+            actualizarCarrusel();
+
+        }
+
+    }
+);
+
+
+                    track.appendChild(
+                        tarjeta
+                    );
+
+
+                    /* DOT */
+
+                    const punto =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    punto.className =
+                        "dot";
+
+
+                    punto.addEventListener(
+                        "click",
+                        () => {
+
+                            productoActual = index;
+
+                            actualizarCarrusel();
+
+                        }
+                    );
+
+
+                    dots.appendChild(
+                        punto
+                    );
+
+                }
+            );
+
+
+            actualizarCarrusel();
+
+        }
+
+
+        /* ================================================
+           ACTUALIZAR CARRUSEL
+        ================================================= */
+
+        function actualizarCarrusel() {
+
+            const tarjetas =
+                document.querySelectorAll(
+                    ".slide"
+                );
+
+
+            const total =
+                tarjetas.length;
+
+
+            tarjetas.forEach(
+                (tarjeta, index) => {
+
+
+                    tarjeta.classList.remove(
+                        "active",
+                        "previous",
+                        "next"
+                    );
+
+
+                    if (
+                        index === productoActual
+                    ) {
+
+                        tarjeta.classList.add(
+                            "active"
+                        );
+
+                    }
+
+
+                    else if (
+                        index ===
+                        (
+                            productoActual -
+                            1 +
+                            total
+                        ) % total
+                    ) {
+
+                        tarjeta.classList.add(
+                            "previous"
+                        );
+
+                    }
+
+
+                    else if (
+                        index ===
+                        (
+                            productoActual +
+                            1
+                        ) % total
+                    ) {
+
+                        tarjeta.classList.add(
+                            "next"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* DOTS */
+
+            document.querySelectorAll(
+                ".dot"
+            ).forEach(
+                (punto, index) => {
+
+                    punto.classList.toggle(
+                        "active",
+                        index === productoActual
+                    );
+
+                }
+            );
+
+
+            /* INFORMACIÓN */
+
+            const producto =
+                listaProductos[
+                    productoActual
+                ];
+
+
+            document.getElementById(
+                "selected-reference"
+            ).textContent =
+                producto.referencia;
+
+
+            document.getElementById(
+                "selected-name"
+            ).textContent =
+                producto.nombre;
+
+
+            document.getElementById(
+                "selected-description"
+            ).textContent =
+                producto.descripcion;
+
+
+            document.getElementById(
+                "selected-price"
+            ).textContent =
+                producto.precio;
+
+
+            /* WHATSAPP */
+
+            const mensaje =
+                `Hola, estoy interesado en ${producto.nombre} (${producto.referencia}).`;
+
+
+            document.getElementById(
+                "consult-button"
+            ).href =
+                "https://wa.me/57XXXXXXXXXX?text=" +
+                encodeURIComponent(
+                    mensaje
+                );
+
+        }
+
+
+        /* ================================================
+           BOTÓN ANTERIOR
+        ================================================= */
+
+        document.getElementById(
+            "previous-button"
+        ).addEventListener(
+            "click",
+            () => {
+
+                productoActual--;
+
+                if (
+                    productoActual < 0
+                ) {
+
+                    productoActual =
+                        listaProductos.length - 1;
+
+                }
+
+                actualizarCarrusel();
+
+            }
+        );
+
+
+        /* ================================================
+           BOTÓN SIGUIENTE
+        ================================================= */
+
+        document.getElementById(
+            "next-button"
+        ).addEventListener(
+            "click",
+            () => {
+
+                productoActual++;
+
+                if (
+                    productoActual >=
+                    listaProductos.length
+                ) {
+
+                    productoActual = 0;
+
+                }
+
+                actualizarCarrusel();
+
+            }
+        );
+
+
+        /* ================================================
+           INICIAR
+        ================================================= */
+
+        crearTarjetas();
+
+        /* ================================================
+   ZOOM DE PRODUCTO
+================================================ */
+
+/* ================================================
+   ZOOM AVANZADO DE PRODUCTO
+================================================ */
+
+const zoomModal =
+    document.getElementById("zoom-modal");
+
+const zoomImage =
+    document.getElementById("zoom-image");
+
+    const zoomPrev =
+    document.getElementById("zoom-prev");
+
+const zoomNext =
+    document.getElementById("zoom-next");
+
+const zoomClose =
+    document.getElementById("zoom-close");
+
+const zoomIn =
+    document.getElementById("zoom-in");
+
+const zoomOut =
+    document.getElementById("zoom-out");
+
+
+/* ================================================
+   VARIABLES DEL ZOOM
+================================================ */
+
+let zoomLevel = 1;
+
+let positionX = 0;
+let positionY = 0;
+
+let isDragging = false;
+
+let startX = 0;
+let startY = 0;
+
+
+/* ================================================
+   ACTUALIZAR IMAGEN
+================================================ */
+
+function actualizarZoom() {
+
+    zoomImage.style.transform =
+        `translate(${positionX}px, ${positionY}px) scale(${zoomLevel})`;
+
+}
+
+
+/* ================================================
+   REINICIAR ZOOM
+================================================ */
+
+function reiniciarZoom() {
+
+    zoomLevel = 1;
+
+    positionX = 0;
+
+    positionY = 0;
+
+    actualizarZoom();
+
+}
+
+
+/* ================================================
+   ABRIR ZOOM
+================================================ */
+
+function abrirZoom() {
+
+    const producto =
+        listaProductos[productoActual];
+
+
+    zoomImage.src =
+        producto.imagen;
+
+
+    zoomImage.alt =
+        producto.nombre;
+
+
+    reiniciarZoom();
+
+
+    zoomModal.classList.add(
+        "active"
+    );
+
+}
+
+function productoAnterior() {
+    productoActual--;
+
+    if (productoActual < 0) {
+        productoActual = listaProductos.length - 1;
+    }
+
+    abrirZoom();
+}
+
+function productoSiguiente() {
+    productoActual++;
+
+    if (productoActual >= listaProductos.length) {
+        productoActual = 0;
+    }
+
+    abrirZoom();
+}
+
+
+
+/* ================================================
+   CERRAR ZOOM
+================================================ */
+
+function cerrarZoom() {
+
+    zoomModal.classList.remove(
+        "active"
+    );
+
+}
+
+
+/* ================================================
+   AUMENTAR ZOOM
+================================================ */
+
+function aumentarZoom(
+    cantidad = 0.25
+) {
+
+    zoomLevel += cantidad;
+
+
+    if (zoomLevel > 4) {
+
+        zoomLevel = 4;
+
+    }
+
+
+    actualizarZoom();
+
+}
+
+
+/* ================================================
+   REDUCIR ZOOM
+================================================ */
+
+function reducirZoom(
+    cantidad = 0.25
+) {
+
+    zoomLevel -= cantidad;
+
+
+    if (zoomLevel < 1) {
+
+        zoomLevel = 1;
+
+        positionX = 0;
+
+        positionY = 0;
+
+    }
+
+
+    actualizarZoom();
+
+}
+
+
+/* ================================================
+   BOTÓN +
+================================================ */
+
+zoomIn.addEventListener(
+    "click",
+    () => {
+
+        aumentarZoom();
+
+    }
+);
+
+
+/* ================================================
+   BOTÓN -
+================================================ */
+
+zoomOut.addEventListener(
+    "click",
+    () => {
+
+        reducirZoom();
+
+    }
+);
+
+
+
+/* ================================================
+   RUEDA DEL MOUSE
+================================================ */
+
+zoomImage.addEventListener(
+    "wheel",
+    (evento) => {
+
+        evento.preventDefault();
+
+
+        if (
+            evento.deltaY < 0
+        ) {
+
+            aumentarZoom(0.15);
+
+        } else {
+
+            reducirZoom(0.15);
+
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* ================================================
+   DOBLE CLIC
+================================================ */
+
+zoomImage.addEventListener(
+    "dblclick",
+    (evento) => {
+
+        evento.preventDefault();
+
+
+        if (
+            zoomLevel === 1
+        ) {
+
+            zoomLevel = 2;
+
+        } else {
+
+            zoomLevel = 1;
+
+            positionX = 0;
+
+            positionY = 0;
+
+        }
+
+
+        actualizarZoom();
+
+    }
+);
+
+
+/* ================================================
+   ARRASTRAR CON MOUSE
+================================================ */
+
+zoomImage.addEventListener(
+    "mousedown",
+    (evento) => {
+
+        if (
+            zoomLevel <= 1
+        ) {
+
+            return;
+
+        }
+
+
+        isDragging = true;
+
+
+        startX =
+            evento.clientX -
+            positionX;
+
+
+        startY =
+            evento.clientY -
+            positionY;
+
+
+        zoomImage.style.cursor =
+            "grabbing";
+
+    }
+);
+
+
+document.addEventListener(
+    "mousemove",
+    (evento) => {
+
+        if (
+            !isDragging
+        ) {
+
+            return;
+
+        }
+
+
+        positionX =
+            evento.clientX -
+            startX;
+
+
+        positionY =
+            evento.clientY -
+            startY;
+
+
+        actualizarZoom();
+
+    }
+);
+
+
+document.addEventListener(
+    "mouseup",
+    () => {
+
+        isDragging = false;
+
+
+        zoomImage.style.cursor =
+            zoomLevel > 1
+                ? "grab"
+                : "default";
+
+    }
+);
+
+
+/* ================================================
+   VARIABLES PARA TOUCH
+================================================ */
+
+let initialDistance = 0;
+
+let initialZoom = 1;
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+
+/* ================================================
+   CALCULAR DISTANCIA ENTRE DOS DEDOS
+================================================ */
+
+function obtenerDistancia(
+    touch1,
+    touch2
+) {
+
+    const diferenciaX =
+        touch1.clientX -
+        touch2.clientX;
+
+
+    const diferenciaY =
+        touch1.clientY -
+        touch2.clientY;
+
+
+    return Math.sqrt(
+        diferenciaX * diferenciaX +
+        diferenciaY * diferenciaY
+    );
+
+}
+
+
+/* ================================================
+   TOUCH — INICIO
+================================================ */
+
+zoomImage.addEventListener(
+    "touchstart",
+    (evento) => {
+
+        /* DOS DEDOS */
+
+        if (
+            evento.touches.length === 2
+        ) {
+
+            initialDistance =
+                obtenerDistancia(
+                    evento.touches[0],
+                    evento.touches[1]
+                );
+
+
+            initialZoom =
+                zoomLevel;
+
+        }
+
+
+        /* UN DEDO */
+
+        else if (
+            evento.touches.length === 1 &&
+            zoomLevel > 1
+        ) {
+
+            touchStartX =
+                evento.touches[0].clientX -
+                positionX;
+
+
+            touchStartY =
+                evento.touches[0].clientY -
+                positionY;
+
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* ================================================
+   TOUCH — MOVIMIENTO
+================================================ */
+
+zoomImage.addEventListener(
+    "touchmove",
+    (evento) => {
+
+        evento.preventDefault();
+
+
+        /* =========================
+           DOS DEDOS = PINCH
+        ========================== */
+
+        if (
+            evento.touches.length === 2
+        ) {
+
+            const distanciaActual =
+                obtenerDistancia(
+                    evento.touches[0],
+                    evento.touches[1]
+                );
+
+
+            const factor =
+                distanciaActual /
+                initialDistance;
+
+
+            zoomLevel =
+                initialZoom * factor;
+
+
+            if (
+                zoomLevel < 1
+            ) {
+
+                zoomLevel = 1;
+
+            }
+
+
+            if (
+                zoomLevel > 4
+            ) {
+
+                zoomLevel = 4;
+
+            }
+
+
+            actualizarZoom();
+
+        }
+
+
+        /* =========================
+           UN DEDO = ARRASTRAR
+        ========================== */
+
+        else if (
+            evento.touches.length === 1 &&
+            zoomLevel > 1
+        ) {
+
+            positionX =
+                evento.touches[0].clientX -
+                touchStartX;
+
+
+            positionY =
+                evento.touches[0].clientY -
+                touchStartY;
+
+
+            actualizarZoom();
+
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* ================================================
+   CERRAR CON X
+================================================ */
+
+zoomClose.addEventListener(
+    "click",
+    cerrarZoom
+);
+
+
+zoomPrev.addEventListener(
+    "click",
+    productoAnterior
+);
+
+zoomNext.addEventListener(
+    "click",
+    productoSiguiente
+);
+
+
+/* ================================================
+   CERRAR HACIENDO CLIC EN EL FONDO
+================================================ */
+
+zoomModal.addEventListener(
+    "click",
+    (evento) => {
+
+        if (
+            evento.target === zoomModal
+        ) {
+
+            cerrarZoom();
+
+        }
+
+    }
+);
+
+
+/* ================================================
+   ESC PARA CERRAR
+================================================ */
+
+document.addEventListener(
+    "keydown",
+    (evento) => {
+
+        if (
+            evento.key === "Escape"
+        ) {
+
+            cerrarZoom();
+
+        }
+
+    }
+);
+
+
+    </script>
+
+<script>
+(function () {
+
+    const categoriaActual = new URLSearchParams(window.location.search).get("categoria");
+
+    const colores = {
+    baby: "#F3B6CF",
+    nino: "#A9DDE8",
+    juvenil: "#C5B5E5",
+    dama: "#F3B6D0",
+    hombre: "#B7C5E3",
+    otros: "#D6D6D6"
+};
+
+    const color = colores[categoriaActual];
+
+    if (color) {
+
+        // Cambia el fondo general
+        document.body.style.backgroundColor = color;
+
+        // Cambia específicamente el MAIN de productos
+        const catalogo = document.querySelector("main.catalog-page");
+
+        if (catalogo) {
+            catalogo.style.backgroundColor = color;
+        }
+
+    }
+
+})();
+</script>
+
+
+</body>
+
+</html>
