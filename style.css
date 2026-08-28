@@ -7,19 +7,19 @@
     --azul-oscuro: var(--azul-oscuro);
     --azul-secundario: var(--azul-secundario);
     --azul-hover: var(--azul-hover);
-    --rojo-acento: var(--rojo-acento)
+    --rojo-acento: var(--rojo-acento);
 
     --gris-borde: var(--gris-borde);
-    --gris-borde-secundario: var(--gris-borde-secundario)
+    --gris-borde-secundario: var(--gris-borde-secundario);
     --gris-texto: var(--gris-texto);
-    --gris-texto-claro: var(--gris-texto-claro)
+    --gris-texto-claro: var(--gris-texto-claro);
     --texto-principal: var(--texto-principal);
 
     --blanco: var(--blanco);
 
-    --fondo-tarjeta: var(--fondo-tarjeta)
-    --fondo-tarjeta: var(--borde-tarjeta)
-    --borde-tarjeta: var(--borde-interfaz)
+    --fondo-tarjeta: var(--fondo-tarjeta);
+    --fondo-tarjeta: var(--borde-tarjeta);
+    --borde-tarjeta: var(--borde-interfaz);
 }
 
 
@@ -1617,3 +1617,402 @@ body#productos-page {
             }
 
         }
+/* =========================================
+   RESPONSIVE FINAL KROKI APP
+   CELULARES
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    .header {
+        height: 76px;
+        padding: 0 12px;
+        gap: 10px;
+    }
+
+    .header .logo {
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .header .navbar {
+        gap: 10px;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .header .navbar a {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+        width: 100%;
+        min-height: auto;
+
+        padding: 55px 18px 70px;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 30px;
+
+        overflow: hidden;
+    }
+
+    .hero-text {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(48px, 14vw, 70px);
+        line-height: 0.9;
+
+        margin: 12px 0 24px;
+    }
+
+    .description {
+        width: 100%;
+        max-width: 330px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+
+    /* ================================
+       CARRUSEL DEL INICIO
+    ================================= */
+
+    .hero-product {
+        width: 100%;
+        max-width: 100%;
+
+        height: auto;
+    }
+
+    #inicio-carrusel {
+        width: 100%;
+        max-width: 360px;
+        height: 350px;
+
+        margin: 0 auto;
+
+        overflow: hidden;
+    }
+
+    #inicio-carrusel .hero-slide {
+        width: 115px;
+        height: 215px;
+    }
+
+    #inicio-carrusel .hero-slide.active {
+        width: 155px;
+        height: 260px;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    #inicio-carrusel .hero-slide.prev {
+        transform:
+            translate(calc(-50% - 105px), -50%)
+            scale(0.72);
+
+        opacity: 0.25;
+    }
+
+    #inicio-carrusel .hero-slide.next {
+        transform:
+            translate(calc(-50% + 105px), -50%)
+            scale(0.72);
+
+        opacity: 0.25;
+    }
+
+    #inicio-carrusel .hero-prev,
+    #inicio-carrusel .hero-next {
+        width: 40px;
+        height: 40px;
+
+        font-size: 18px;
+    }
+
+    #inicio-carrusel .hero-prev {
+        left: 4px;
+    }
+
+    #inicio-carrusel .hero-next {
+        right: 4px;
+    }
+
+
+    /* ================================
+       BOTÓN
+    ================================= */
+
+    .button {
+        padding: 14px 25px;
+        font-size: 12px;
+    }
+
+
+    /* ================================
+       NUEVOS DISEÑOS
+    ================================= */
+
+    .new-designs-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+
+    /* ================================
+       PÁGINA PRODUCTOS
+    ================================= */
+
+    .catalog-page {
+        width: 100%;
+
+        padding: 45px 12px 70px;
+
+        overflow: hidden;
+    }
+
+    .catalog-header {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .catalog-header .red-text {
+        font-size: 11px;
+    }
+
+    .catalog-header h1 {
+        font-size: clamp(48px, 15vw, 70px);
+        line-height: 0.9;
+
+        margin: 8px 0 14px;
+    }
+
+    .catalog-header p:last-child {
+        font-size: 13px;
+
+        padding: 0 15px;
+    }
+
+
+    /* ================================
+       BOTONES CATEGORÍAS
+    ================================= */
+
+    .category-buttons {
+        width: 100%;
+
+        gap: 7px;
+
+        margin-bottom: 25px;
+    }
+
+    .category-buttons a {
+        padding: 8px 14px;
+
+        font-size: 11px;
+    }
+
+
+    /* ================================
+       CARRUSEL PRODUCTOS
+    ================================= */
+
+    .carousel-area {
+        width: 100%;
+        height: 350px;
+
+        margin: 0 auto;
+    }
+
+    .carousel-window {
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+    }
+
+    .slide {
+        width: 190px;
+        height: 285px;
+
+        top: 25px;
+    }
+
+    .slide.active {
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    .slide.previous {
+        transform:
+            translateX(calc(-50% - 125px))
+            scale(0.62);
+
+        opacity: 0.25;
+    }
+
+    .slide.next {
+        transform:
+            translateX(calc(-50% + 125px))
+            scale(0.62);
+
+        opacity: 0.25;
+    }
+
+
+    /* ================================
+       FLECHAS PRODUCTOS
+    ================================= */
+
+    .carousel-arrow {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .arrow-left {
+        left: 0;
+    }
+
+    .arrow-right {
+        right: 0;
+    }
+
+
+    /* ================================
+       INFORMACIÓN PRODUCTO
+    ================================= */
+
+    .selected-product {
+        width: 100%;
+        padding: 0 10px;
+
+        margin-top: 5px;
+    }
+
+    .selected-reference {
+        font-size: 10px;
+    }
+
+    .selected-product h2 {
+        font-size: 30px;
+    }
+
+    .selected-description {
+        font-size: 13px;
+
+        padding: 0 10px;
+    }
+
+    .consult-button {
+        padding: 12px 22px;
+
+        font-size: 11px;
+    }
+
+
+    /* ================================
+       PUNTOS
+    ================================= */
+
+    .dots {
+        margin-top: 18px;
+        gap: 6px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .dot.active {
+        width: 20px;
+    }
+
+
+    /* ================================
+       NOSOTROS
+    ================================= */
+
+    .nosotros {
+        min-height: auto;
+
+        padding: 70px 18px;
+    }
+
+    .nosotros h2 {
+        font-size: 45px;
+    }
+
+    .nosotros-contenido > p:last-child {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+
+    /* ================================
+       CONTACTO
+    ================================= */
+
+    .contacto {
+        min-height: auto;
+
+        padding: 70px 18px;
+    }
+
+    .contacto h2 {
+        font-size: 45px;
+    }
+
+    .contacto-datos {
+        flex-direction: column;
+
+        gap: 30px;
+        margin-top: 35px;
+    }
+
+    .contacto-item a {
+        font-size: 17px;
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        padding: 30px 18px;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        text-align: center;
+    }
+
+}
