@@ -3,23 +3,23 @@
 ================================ */
 
 :root {
-    --azul-principal: var(--azul-principal);
-    --azul-oscuro: var(--azul-oscuro);
-    --azul-secundario: var(--azul-secundario);
-    --azul-hover: var(--azul-hover);
-    --rojo-acento: var(--rojo-acento);
+    --azul-principal: #00aeef;
+    --azul-oscuro: #0f1e81;
+    --azul-secundario: #009fe3;
+    --azul-hover: #8390e3;
+    --rojo-acento: #009fe3;
 
-    --gris-borde: var(--gris-borde);
-    --gris-borde-secundario: var(--gris-borde-secundario);
-    --gris-texto: var(--gris-texto);
-    --gris-texto-claro: var(--gris-texto-claro);
-    --texto-principal: var(--texto-principal);
+    --gris-borde: #dedad3;
+    --gris-borde-secundario: #dedad3;
+    --gris-texto: #555555;
+    --gris-texto-claro: #555555;
+    --texto-principal: #111111;
 
-    --blanco: var(--blanco);
+    --blanco: #ffffff;
 
-    --fondo-tarjeta: var(--fondo-tarjeta);
-    --fondo-tarjeta: var(--borde-tarjeta);
-    --borde-tarjeta: var(--borde-interfaz);
+    --fondo-tarjeta: #ffffff;
+    --borde-tarjeta: #dedad3;
+    --borde-interfaz: #dedad3;
 }
 
 
@@ -194,9 +194,9 @@ a {
 
     border-radius: 20px;
 
-    border: 1px dashed var(--gris-borde-secundario)
+    border: 1px dashed var(--gris-borde-secundario);
 
-    color: var(--gris-borde-secundario)
+    color: var(--gris-borde-secundario);
 
     font-family: "Anton", sans-serif;
 
@@ -301,7 +301,7 @@ a {
             #090909
         );
 
-    color: var(--gris-borde-secundario)
+    color: var(--gris-borde-secundario);
 
     font-family: "Anton", sans-serif;
 
@@ -1268,7 +1268,7 @@ body#productos-page {
 
             border-radius: 50%;
 
-            border: 1px solid var(--gris-borde-secundario)
+            border: 1px solid var(--gris-borde-secundario);
 
             background: #111;
 
@@ -1402,7 +1402,7 @@ body#productos-page {
 
             border-radius: 50%;
 
-            background: var(--gris-borde-secundario)
+            background: var(--gris-borde-secundario);
 
             cursor: pointer;
 
