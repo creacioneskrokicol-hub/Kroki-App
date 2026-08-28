@@ -84,3 +84,173 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
+
+// ===============================
+// VISOR DE IMÁGENES DEL CARRUSEL
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const imageModal = document.getElementById("image-modal");
+    const imageModalImg = document.getElementById("image-modal-img");
+    const imageModalClose = document.getElementById("image-modal-close");
+
+    const imageModalPrev = document.getElementById("image-modal-prev");
+    const imageModalNext = document.getElementById("image-modal-next");
+
+    const heroImages = document.querySelectorAll(
+        "#inicio-carrusel .hero-slide img"
+    );
+
+    console.log("KROKICOL - Imágenes del visor:", heroImages.length);
+
+    if (
+        !imageModal ||
+        !imageModalImg ||
+        !imageModalClose ||
+        !imageModalPrev ||
+        !imageModalNext
+    ) {
+        console.error("KROKICOL - No se encontró algún elemento del visor");
+        return;
+    }
+
+    let currentImage = 0;
+
+
+    // ===============================
+    // ABRIR IMAGEN
+    // ===============================
+
+    heroImages.forEach((img, index) => {
+
+        img.addEventListener("click", () => {
+
+            currentImage = index;
+
+            imageModalImg.src = img.src;
+            imageModalImg.alt = img.alt;
+
+            imageModal.classList.add("active");
+
+        });
+
+    });
+
+
+    // ===============================
+    // MOSTRAR IMAGEN
+    // ===============================
+
+    function showModalImage(index) {
+
+        if (index < 0) {
+            index = heroImages.length - 1;
+        }
+
+        if (index >= heroImages.length) {
+            index = 0;
+        }
+
+        currentImage = index;
+
+        imageModalImg.src = heroImages[currentImage].src;
+        imageModalImg.alt = heroImages[currentImage].alt;
+
+    }
+
+
+    // ===============================
+    // SIGUIENTE
+    // ===============================
+
+    imageModalNext.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        showModalImage(currentImage + 1);
+
+    });
+
+
+    // ===============================
+    // ANTERIOR
+    // ===============================
+
+    imageModalPrev.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        showModalImage(currentImage - 1);
+
+    });
+
+
+    // ===============================
+    // CERRAR
+    // ===============================
+
+    function closeImageModal() {
+
+        imageModal.classList.remove("active");
+
+        imageModalImg.src = "";
+
+    }
+
+
+    // Botón X
+    imageModalClose.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        closeImageModal();
+
+    });
+
+
+    // Clic fuera de la imagen
+    imageModal.addEventListener("click", (event) => {
+
+        if (event.target === imageModal) {
+
+            closeImageModal();
+
+        }
+
+    });
+
+
+    // ===============================
+    // ESC
+    // ===============================
+
+    document.addEventListener("keydown", (event) => {
+
+        if (!imageModal.classList.contains("active")) {
+            return;
+        }
+
+        if (event.key === "Escape") {
+
+            closeImageModal();
+
+        }
+
+        // Flecha derecha del teclado
+        if (event.key === "ArrowRight") {
+
+            showModalImage(currentImage + 1);
+
+        }
+
+        // Flecha izquierda del teclado
+        if (event.key === "ArrowLeft") {
+
+            showModalImage(currentImage - 1);
+
+        }
+
+    });
+
+});

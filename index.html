@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./images/icon-192.png">
 
-    <title>Productos | Krokicol</title>
+    <title>Productos | KROKI</title>
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,17 +106,21 @@
 
         <div class="hero-slides">
 
-    <a href="./images/6.webp" class="hero-slide active">
-        <img src="./images/6.webp" alt="Niño">
-    </a>
+    <div class="hero-slide">
+    <img src="./images/hk1.webp" alt="Nuevo diseño 1">
+</div>
 
-    <a href="./images/14.webp" class="hero-slide">
-        <img src="./images/14.webp" alt="Juvenil">
-    </a>
+<div class="hero-slide">
+    <img src="./images/hk2.webp" alt="Nuevo diseño 2">
+</div>
 
-    <a href="./images/23.webp" class="hero-slide">
-        <img src="./images/23.webp" alt="Dama">
-    </a>
+<div class="hero-slide">
+    <img src="./images/hk3.webp" alt="Nuevo diseño 3">
+</div>
+
+<div class="hero-slide">
+    <img src="./images/hk4.webp" alt="Nuevo diseño 4">
+</div>
 
 </div>
 
@@ -132,82 +136,6 @@
      CARRUSEL DE PRODUCTOS
 ================================ -->
 
-<section class="catalog-page">
-
-    <h2 id="category-title"></h2>
-
-    <p id="category-description"></p>
-
-    <div class="carousel-area">
-
-        <div class="carousel-window">
-
-            <div id="carousel-track" class="carousel-track"></div>
-
-        </div>
-
-        <button
-            id="previous-button"
-            class="carousel-arrow arrow-left">
-            ‹
-        </button>
-
-        <button
-            id="next-button"
-            class="carousel-arrow arrow-right">
-            ›
-        </button>
-
-        <div id="dots"></div>
-
-    </div>
-
-    <!-- INFORMACIÓN DEL PRODUCTO SELECCIONADO -->
-
-<div class="selected-product">
-
-    <p id="selected-reference"></p>
-
-    <h2 id="selected-name"></h2>
-
-    <p id="selected-description"></p>
-
-    <p id="selected-price"></p>
-
-    <a
-        id="consult-button"
-        class="button"
-        href="#"
-        target="_blank">
-        CONSULTAR
-    </a>
-
-</div>
-
-<!-- MODAL DE ZOOM -->
-<div id="zoom-modal" class="zoom-modal">
-
-    <button id="zoom-close" class="zoom-close">×</button>
-
-    <button id="zoom-prev" class="zoom-nav zoom-prev">‹</button>
-
-    <div class="zoom-content">
-
-        <img id="zoom-image" src="" alt="Producto">
-
-        <div class="zoom-controls">
-            <button id="zoom-out">−</button>
-            <span>ZOOM</span>
-            <button id="zoom-in">+</button>
-        </div>
-
-    </div>
-
-    <button id="zoom-next" class="zoom-nav zoom-next">›</button>
-
-</div>
-
-        </section>
 
 
 
@@ -1459,6 +1387,20 @@ window.addEventListener("load", function () {
     window.scrollTo(0, 0);
 });
 </script>
+
+<!-- VISOR DE IMAGEN Carrusel del inicio -->
+
+<div id="image-modal" class="image-modal">
+
+    <button id="image-modal-close" class="image-modal-close">×</button>
+
+    <button id="image-modal-prev" class="image-modal-arrow image-modal-prev">←</button>
+
+    <img id="image-modal-img" src="" alt="Imagen ampliada">
+
+    <button id="image-modal-next" class="image-modal-arrow image-modal-next">→</button>
+
+</div>
 
 </body>
 

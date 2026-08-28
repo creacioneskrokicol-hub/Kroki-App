@@ -102,13 +102,13 @@ a {
 
 
 /* ================================
-   TEXTOS
+   TEXTOS KROKI pequeño
 ================================ */
 
 .red-text {
     color: var(--azul-secundario);
 
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -560,15 +560,15 @@ footer p {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
 }
 
 
 /* TARJETA CENTRAL */
 
 #inicio-carrusel .hero-slide.active {
-    width: 200px;
-    height: 330px;
+    width: 420px;
+    height: 580px;
 
     opacity: 1;
 
@@ -985,7 +985,6 @@ body#productos-page {
         ================================= */
 
         .catalog-page {
-            display: none;
     width: 100%;
     min-height: calc(100vh - 80px);
     background: var(--fondo-principal);
@@ -1707,23 +1706,21 @@ body#productos-page {
     }
 
     #inicio-carrusel {
-        width: 100%;
-        max-width: 360px;
-        height: 350px;
-
-        margin: 0 auto;
-
-        overflow: hidden;
-    }
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    margin: 0 auto;
+    overflow: hidden;
+}
 
     #inicio-carrusel .hero-slide {
-        width: 115px;
-        height: 215px;
-    }
+    width: 280px;
+    height: 420px;
+}
 
     #inicio-carrusel .hero-slide.active {
-        width: 155px;
-        height: 260px;
+    width: 290px;
+    height: 420px;
 
         transform:
             translate(-50%, -50%)
@@ -2016,4 +2013,91 @@ body#productos-page {
         text-align: center;
     }
 
+}
+
+/* ===============================
+   VISOR DE IMAGEN - carrusel del inicio
+================================ */
+
+.image-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    cursor: pointer;
+}
+
+.image-modal.active {
+    display: flex;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: default;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* ===============================
+   FLECHAS DEL VISOR de inicio
+================================ */
+
+.image-modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: black;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.image-modal-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.image-modal-prev {
+    left: 30px;
+}
+
+.image-modal-next {
+    right: 30px;
 }
