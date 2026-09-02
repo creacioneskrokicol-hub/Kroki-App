@@ -226,18 +226,35 @@
         ✕
     </button>
 
-<button class="zoom-prev" id="zoom-prev">←</button>
+
 
     <div class="zoom-content">
 
-        <img
-            id="zoom-image"
-            src=""
-            alt="Producto Krokicol">
+    <!-- FLECHA PRODUCTO ANTERIOR -->
+    <button
+        id="zoom-prev"
+        class="zoom-arrow zoom-prev"
+        aria-label="Producto anterior">
+        ‹
+    </button>
 
-    </div>
+    <!-- IMAGEN DEL PRODUCTO -->
+    <img
+        id="zoom-image"
+        src=""
+        alt="Producto Krokicol">
 
-<button class="zoom-next" id="zoom-next">→</button>
+    <!-- FLECHA PRODUCTO SIGUIENTE -->
+    <button
+        id="zoom-next"
+        class="zoom-arrow zoom-next"
+        aria-label="Producto siguiente">
+        ›
+    </button>
+
+</div>
+
+
 
     <div class="zoom-controls">
 
@@ -690,11 +707,6 @@ const zoomModal =
 const zoomImage =
     document.getElementById("zoom-image");
 
-    const zoomPrev =
-    document.getElementById("zoom-prev");
-
-const zoomNext =
-    document.getElementById("zoom-next");
 
 const zoomClose =
     document.getElementById("zoom-close");
@@ -704,6 +716,9 @@ const zoomIn =
 
 const zoomOut =
     document.getElementById("zoom-out");
+
+const zoomPrev = document.getElementById("zoom-prev");
+const zoomNext = document.getElementById("zoom-next");
 
 
 /* ================================================
@@ -1226,7 +1241,6 @@ zoomClose.addEventListener(
     cerrarZoom
 );
 
-
 zoomPrev.addEventListener(
     "click",
     productoAnterior
@@ -1235,6 +1249,58 @@ zoomPrev.addEventListener(
 zoomNext.addEventListener(
     "click",
     productoSiguiente
+);
+
+/* =========================================
+   DESLIZAMIENTO EN IMAGEN DEL ZOOM
+========================================= */
+
+let inicioZoomX = 0;
+let finZoomX = 0;
+
+zoomImage.addEventListener(
+    "touchstart",
+    (evento) => {
+        inicioZoomX = evento.touches[0].clientX;
+    },
+    { passive: true }
+);
+
+zoomImage.addEventListener(
+    "touchend",
+    (evento) => {
+
+        finZoomX = evento.changedTouches[0].clientX;
+
+        const diferenciaZoom =
+            finZoomX - inicioZoomX;
+
+        /* DESLIZAR HACIA LA IZQUIERDA */
+if (diferenciaZoom < -50) {
+
+    zoomImage.classList.remove("deslizar-izquierda");
+    void zoomImage.offsetWidth;
+    zoomImage.classList.add("deslizar-izquierda");
+
+    setTimeout(() => {
+        productoSiguiente();
+    }, 150);
+}
+
+/* DESLIZAR HACIA LA DERECHA */
+else if (diferenciaZoom > 50) {
+
+    zoomImage.classList.remove("deslizar-derecha");
+    void zoomImage.offsetWidth;
+    zoomImage.classList.add("deslizar-derecha");
+
+    setTimeout(() => {
+        productoAnterior();
+    }, 150);
+}
+
+    },
+    { passive: true }
 );
 
 
