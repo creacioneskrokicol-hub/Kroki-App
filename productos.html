@@ -135,15 +135,6 @@
         <section class="carousel-area">
 
 
-            <!-- FLECHA IZQUIERDA -->
-
-            <button
-                class="carousel-arrow arrow-left"
-                id="previous-button">
-
-                ←
-
-            </button>
 
 
             <!-- VENTANA -->
@@ -159,15 +150,7 @@
             </div>
 
 
-            <!-- FLECHA DERECHA -->
-
-            <button
-                class="carousel-arrow arrow-right"
-                id="next-button">
-
-                →
-
-            </button>
+            
 
 
         </section>
@@ -606,59 +589,85 @@
 
         }
 
-
         /* ================================================
-           BOTÓN ANTERIOR
-        ================================================= */
+   DESLIZAMIENTO DEL CARRUSEL
+================================================= */
 
-        document.getElementById(
-            "previous-button"
-        ).addEventListener(
-            "click",
-            () => {
+let inicioX = 0;
+let finX = 0;
 
-                productoActual--;
+const ventanaCarrusel =
+    document.querySelector(".carousel-window");
 
-                if (
-                    productoActual < 0
-                ) {
 
-                    productoActual =
-                        listaProductos.length - 1;
+ventanaCarrusel.addEventListener(
+    "touchstart",
+    (evento) => {
 
-                }
+        inicioX =
+            evento.touches[0].clientX;
 
-                actualizarCarrusel();
+    },
+    { passive: true }
+);
+
+
+ventanaCarrusel.addEventListener(
+    "touchend",
+    (evento) => {
+
+        finX =
+            evento.changedTouches[0].clientX;
+
+        const diferencia =
+            finX - inicioX;
+
+
+        /* DESLIZAR HACIA LA IZQUIERDA */
+
+        if (diferencia < -50) {
+
+            productoActual++;
+
+            if (
+                productoActual >=
+                listaProductos.length
+            ) {
+
+                productoActual = 0;
 
             }
-        );
+
+            actualizarCarrusel();
+
+        }
 
 
-        /* ================================================
-           BOTÓN SIGUIENTE
-        ================================================= */
+        /* DESLIZAR HACIA LA DERECHA */
 
-        document.getElementById(
-            "next-button"
-        ).addEventListener(
-            "click",
-            () => {
+        else if (diferencia > 50) {
 
-                productoActual++;
+            productoActual--;
 
-                if (
-                    productoActual >=
-                    listaProductos.length
-                ) {
+            if (
+                productoActual < 0
+            ) {
 
-                    productoActual = 0;
-
-                }
-
-                actualizarCarrusel();
+                productoActual =
+                    listaProductos.length - 1;
 
             }
-        );
+
+            actualizarCarrusel();
+
+        }
+
+    }
+);
+
+
+    
+
 
 
         /* ================================================
