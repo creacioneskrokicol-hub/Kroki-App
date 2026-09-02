@@ -1155,6 +1155,10 @@ zoomImage.addEventListener(
         evento.preventDefault();
         evento.stopPropagation();
 
+        if (zoomLevel > 1) {
+    // Permitir mover la imagen ampliada
+}
+
 
         /* =========================
            DOS DEDOS = PINCH
@@ -1262,6 +1266,9 @@ let finZoomX = 0;
 zoomImage.addEventListener(
     "touchstart",
     (evento) => {
+
+        if (zoomLevel > 1) return;
+
         inicioZoomX = evento.touches[0].clientX;
     },
     { passive: true }
@@ -1270,6 +1277,8 @@ zoomImage.addEventListener(
 zoomImage.addEventListener(
     "touchend",
     (evento) => {
+
+        if (zoomLevel > 1) return;
 
         finZoomX = evento.changedTouches[0].clientX;
 
