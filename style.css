@@ -995,7 +995,7 @@ body#productos-page {
 
 
         /* ================================
-           ENCABEZADO
+           ENCABEZADO Coleccion Krokicol
         ================================= */
 
         .catalog-header {
@@ -1008,6 +1008,7 @@ body#productos-page {
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
         .catalog-header h1 {
@@ -1015,7 +1016,7 @@ body#productos-page {
     font-size: clamp(60px, 8vw, 100px);
     line-height: 0.9;
     color: var(--texto-principal);
-    margin: 10px 0 15px;
+    margin: 25px 0 15px;
 }
 
         .catalog-header p:last-child {
@@ -1436,6 +1437,8 @@ body#productos-page {
     background: rgba(0, 0, 0, 0.92);
 
     padding: 40px;
+
+    touch-action: none;
 }
 
 .zoom-modal.active {
@@ -1456,6 +1459,8 @@ body#productos-page {
     cursor: grab;
 
     position: relative;
+
+    touch-action: none;
 }
 
 
