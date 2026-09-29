@@ -2460,9 +2460,9 @@ body.categoria-cuadricula .dots {
     color: #19299b !important;
 }
 
-/* AJUSTE SOLO PARA CELULAR */
+/* AJUSTE ESPACIO KROKI PEQUEÑO SOLO PARA CELULAR */
 @media (max-width: 700px) {
     .hero {
-        padding-top: 180px !important;
+        padding-top: 100px !important;
     }
 }
