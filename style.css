@@ -97,7 +97,7 @@ a {
 }
 
 .navbar a:hover {
-    color: #ff3025;
+    color: #08A7D8;
 }
 
 
@@ -325,6 +325,7 @@ a {
     font-size: 30px;
 
     padding: 20px 20px 5px;
+    color: #ffffff;
 }
 
 .category span {
@@ -659,6 +660,8 @@ body#productos-page {
     transition: background-color 0.5s ease;
 }
 
+
+
 /* OCULTAR PRECIOS */
 #selected-price {
     display: none;
@@ -881,7 +884,7 @@ body#productos-page {
 }
 
 .header .navbar a:hover {
-    color: #ff3025;
+    color: #08A7D8;
 }
 
 /* ================================
@@ -1004,17 +1007,19 @@ body#productos-page {
         }
 
         .catalog-header .red-text {
-            color: #ff3025;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: block;
+    padding-bottom: 15px;
+}
 
         .catalog-header h1 {
     font-family: "Anton", sans-serif;
     font-size: clamp(60px, 8vw, 100px);
-    line-height: 0.9;
+    line-height: 1.05;
     color: var(--texto-principal);
     margin: 25px 0 15px;
 }
@@ -1047,13 +1052,13 @@ body#productos-page {
         }
 
         .category-buttons a:hover {
-            background: #ff3025;
-            border-color: #ff3025;
+            background: #08A7D8;
+    border-color: #08A7D8;
         }
 
         .category-buttons a.active {
-            background: #ff3025;
-            border-color: #ff3025;
+            background: #08A7D8;
+    border-color: #08A7D8
         }
 
 
@@ -1201,7 +1206,7 @@ body#productos-page {
 
 
         /* ================================
-           INFORMACIÓN DENTRO DE TARJETA
+           INFORMACIÓN COLOR DENTRO DE TARJETA
         ================================= */
 
         .slide-info {
@@ -1235,7 +1240,7 @@ body#productos-page {
         }
 
         .slide-reference {
-            color: #ff3025;
+            color: #ffffff;
 
             font-size: 11px;
 
@@ -1248,6 +1253,7 @@ body#productos-page {
             font-size: 22px;
 
             margin-top: 4px;
+            color: #ffffff;
         }
 
 
@@ -1890,11 +1896,12 @@ body#productos-page {
     }
 
     .catalog-header h1 {
-        font-size: clamp(48px, 15vw, 70px);
-        line-height: 0.9;
+    font-size: clamp(48px, 15vw, 70px);
+    line-height: 0.9;
 
-        margin: 8px 0 14px;
-    }
+    margin: 30px 0 14px;
+    
+}
 
     .catalog-header p:last-child {
         font-size: 13px;
@@ -2430,4 +2437,25 @@ body.categoria-cuadricula .dots {
         gap: 25px;
     }
 
+}
+
+/* ==========================================
+   KROKI DEBAJO DE LAS TARJETAS
+========================================== */
+
+.selected-product {
+    padding-top: 70px;
+    text-align: center;
+}
+
+.selected-brand {
+    display: inline-block;
+    margin: 0;
+    color: #17258f;
+    text-decoration: none;
+}
+
+
+.section-title h2 {
+    color: #19299b !important;
 }

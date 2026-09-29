@@ -38,9 +38,18 @@
 
     <header class="header">
 
+    <!-- SECCIÓN 1: LOGO -->
+    <div class="header-logo-section">
+
         <a href="index.html" class="logo">
             KROKI
         </a>
+
+    </div>
+
+
+    <!-- SECCIÓN 2: MENÚ -->
+    <div class="header-menu-section">
 
         <nav class="navbar">
 
@@ -49,18 +58,18 @@
             </a>
 
             <a href="index.html#productos">
-    Productos
-</a>
+                Productos
+            </a>
 
             <a href="index.html#nosotros">
                 Nosotros
             </a>
 
-        
-
         </nav>
 
-    </header>
+    </div>
+
+</header>
 
 
     <!-- ==================================================
@@ -160,50 +169,11 @@
 
         <section class="selected-product">
 
-            <p
-                class="selected-reference"
-                id="selected-reference">
+    <a href="index.html" class="logo selected-brand">
+    KROKI
+</a>
 
-                REF-001
-
-            </p>
-
-
-            <h2 id="selected-name">
-
-                PRODUCTO
-
-            </h2>
-
-
-            <p
-                class="selected-description"
-                id="selected-description">
-
-                Descripción del producto.
-
-            </p>
-
-
-            <strong
-                class="selected-price"
-                id="selected-price">
-
-                $XX.XXX
-
-            </strong>
-
-
-            <a
-                href="#"
-                class="consult-button"
-                id="consult-button">
-
-                CONSULTAR PRODUCTO
-
-            </a>
-
-        </section>
+</section>
 
 
         <!-- PUNTOS -->
@@ -308,6 +278,10 @@
             productos[categoria];
 
         let productoActual = 0;
+
+        if (categoria === "dama") {
+    document.body.classList.add("dama");
+}
 
 
         const track =
@@ -1359,7 +1333,7 @@ document.addEventListener(
     baby: "#F3B6CF",
     nino: "#A9DDE8",
     juvenil: "#C5B5E5",
-    dama: "#F3B6D0",
+    dama: "#E6DDD0",
     hombre: "#B7C5E3",
     otros: "#D6D6D6"
 };
