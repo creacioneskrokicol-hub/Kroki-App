@@ -320,13 +320,11 @@
                 "dots"
             );
 
-            /* ================================================
-   MODO CUADRÍCULA PARA DAMA
+/* ================================================
+   MODO CUADRÍCULA PARA TODAS LAS CATEGORÍAS
 ================================================ */
 
-if (categoria === "dama") {
-    document.body.classList.add("categoria-dama");
-}
+document.body.classList.add("categoria-cuadricula");
 
         /* ================================================
            TÍTULO
@@ -413,22 +411,11 @@ if (categoria === "dama") {
 `;
 
 
-     tarjeta.addEventListener(
+tarjeta.addEventListener(
     "click",
     () => {
-
         productoActual = index;
-
-        if (categoria === "dama") {
-
-            abrirZoom();
-
-        } else {
-
-            actualizarCarrusel();
-
-        }
-
+        abrirZoom();
     }
 );
 
