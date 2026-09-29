@@ -2459,3 +2459,10 @@ body.categoria-cuadricula .dots {
 .section-title h2 {
     color: #19299b !important;
 }
+
+/* AJUSTE SOLO PARA CELULAR */
+@media (max-width: 700px) {
+    .hero {
+        padding-top: 80px !important;
+    }
+}
