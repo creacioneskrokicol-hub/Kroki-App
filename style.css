@@ -2463,6 +2463,6 @@ body.categoria-cuadricula .dots {
 /* AJUSTE SOLO PARA CELULAR */
 @media (max-width: 700px) {
     .hero {
-        padding-top: 80px !important;
+        padding-top: 180px !important;
     }
 }
