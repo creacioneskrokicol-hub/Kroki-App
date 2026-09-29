@@ -2354,3 +2354,80 @@ body.categoria-cuadricula .dots {
     }
 
 }
+
+/* ==================================================
+   HEADER - DOS SECCIONES
+================================================== */
+
+.header {
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================================================
+   SECCIÓN 1 - LOGO
+================================================== */
+
+.header-logo-section {
+    width: 100%;
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================================================
+   SECCIÓN 2 - MENÚ
+================================================== */
+
+.header-menu-section {
+    width: 100% !important;
+    height: 60px !important;
+    min-height: 60px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #17258f !important;
+}
+
+.header-menu-section .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+}
+
+/* ==================================================
+   ENLACES
+================================================== */
+
+.header-menu-section .navbar a {
+    text-decoration: none;
+}
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media (max-width: 600px) {
+
+    .header-logo-section {
+        min-height: 80px;
+    }
+
+    .header-menu-section {
+        min-height: 50px;
+    }
+
+    .header-menu-section .navbar {
+        gap: 25px;
+    }
+
+}
