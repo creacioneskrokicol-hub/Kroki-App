@@ -320,6 +320,13 @@
                 "dots"
             );
 
+            /* ================================================
+   MODO CUADRÍCULA PARA DAMA
+================================================ */
+
+if (categoria === "dama") {
+    document.body.classList.add("categoria-dama");
+}
 
         /* ================================================
            TÍTULO
@@ -410,13 +417,13 @@
     "click",
     () => {
 
-        if (index === productoActual) {
+        productoActual = index;
+
+        if (categoria === "dama") {
 
             abrirZoom();
 
         } else {
-
-            productoActual = index;
 
             actualizarCarrusel();
 
