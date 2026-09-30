@@ -523,53 +523,6 @@ tarjeta.addEventListener(
                 }
             );
 
-
-            /* INFORMACIÓN */
-
-            const producto =
-                listaProductos[
-                    productoActual
-                ];
-
-
-            document.getElementById(
-                "selected-reference"
-            ).textContent =
-                producto.referencia;
-
-
-            document.getElementById(
-                "selected-name"
-            ).textContent =
-                producto.nombre;
-
-
-            document.getElementById(
-                "selected-description"
-            ).textContent =
-                producto.descripcion;
-
-
-            document.getElementById(
-                "selected-price"
-            ).textContent =
-                producto.precio;
-
-
-            /* WHATSAPP */
-
-            const mensaje =
-                `Hola, estoy interesado en ${producto.nombre} (${producto.referencia}).`;
-
-
-            document.getElementById(
-                "consult-button"
-            ).href =
-                "https://wa.me/57XXXXXXXXXX?text=" +
-                encodeURIComponent(
-                    mensaje
-                );
-
         }
 
         /* ================================================
