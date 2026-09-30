@@ -19,13 +19,6 @@
     <link rel="stylesheet" href="style.css">
 
 
-    <!-- ==================================================
-         ESTILOS DEL CARRUSEL
-         Por ahora están aquí para no tocar style.css.
-    =================================================== -->
-
-    
-
 </head>
 
 
@@ -163,9 +156,6 @@
         </section>
 
 
-        <!-- ==================================================
-             INFORMACIÓN DEL PRODUCTO
-        =================================================== -->
 
         <section class="selected-product">
 
@@ -176,13 +166,6 @@
 </section>
 
 
-        <!-- PUNTOS -->
-
-        <div
-            class="dots"
-            id="dots">
-
-        </div>
 
         <!-- ================================
      VENTANA DE ZOOM
@@ -279,19 +262,10 @@
 
         let productoActual = 0;
 
-        if (categoria === "dama") {
-    document.body.classList.add("dama");
-}
-
 
         const track =
             document.getElementById(
                 "carousel-track"
-            );
-
-        const dots =
-            document.getElementById(
-                "dots"
             );
 
 /* ================================================
@@ -343,7 +317,7 @@ document.body.classList.add("categoria-cuadricula");
 
             track.innerHTML = "";
 
-            dots.innerHTML = "";
+          
 
 
             listaProductos.forEach(
@@ -398,211 +372,11 @@ tarjeta.addEventListener(
                         tarjeta
                     );
 
-
-                    /* DOT */
-
-                    const punto =
-                        document.createElement(
-                            "button"
-                        );
-
-
-                    punto.className =
-                        "dot";
-
-
-                    punto.addEventListener(
-                        "click",
-                        () => {
-
-                            productoActual = index;
-
-                            actualizarCarrusel();
-
-                        }
-                    );
-
-
-                    dots.appendChild(
-                        punto
-                    );
-
                 }
             );
 
 
-            actualizarCarrusel();
-
         }
-
-
-        /* ================================================
-           ACTUALIZAR CARRUSEL
-        ================================================= */
-
-        function actualizarCarrusel() {
-
-            const tarjetas =
-                document.querySelectorAll(
-                    ".slide"
-                );
-
-
-            const total =
-                tarjetas.length;
-
-
-            tarjetas.forEach(
-                (tarjeta, index) => {
-
-
-                    tarjeta.classList.remove(
-                        "active",
-                        "previous",
-                        "next"
-                    );
-
-
-                    if (
-                        index === productoActual
-                    ) {
-
-                        tarjeta.classList.add(
-                            "active"
-                        );
-
-                    }
-
-
-                    else if (
-                        index ===
-                        (
-                            productoActual -
-                            1 +
-                            total
-                        ) % total
-                    ) {
-
-                        tarjeta.classList.add(
-                            "previous"
-                        );
-
-                    }
-
-
-                    else if (
-                        index ===
-                        (
-                            productoActual +
-                            1
-                        ) % total
-                    ) {
-
-                        tarjeta.classList.add(
-                            "next"
-                        );
-
-                    }
-
-                }
-            );
-
-
-            /* DOTS */
-
-            document.querySelectorAll(
-                ".dot"
-            ).forEach(
-                (punto, index) => {
-
-                    punto.classList.toggle(
-                        "active",
-                        index === productoActual
-                    );
-
-                }
-            );
-
-        }
-
-        /* ================================================
-   DESLIZAMIENTO DEL CARRUSEL
-================================================= */
-
-let inicioX = 0;
-let finX = 0;
-
-const ventanaCarrusel =
-    document.querySelector(".carousel-window");
-
-
-ventanaCarrusel.addEventListener(
-    "touchstart",
-    (evento) => {
-
-        inicioX =
-            evento.touches[0].clientX;
-
-    },
-    { passive: true }
-);
-
-
-ventanaCarrusel.addEventListener(
-    "touchend",
-    (evento) => {
-
-        finX =
-            evento.changedTouches[0].clientX;
-
-        const diferencia =
-            finX - inicioX;
-
-
-        /* DESLIZAR HACIA LA IZQUIERDA */
-
-        if (diferencia < -50) {
-
-            productoActual++;
-
-            if (
-                productoActual >=
-                listaProductos.length
-            ) {
-
-                productoActual = 0;
-
-            }
-
-            actualizarCarrusel();
-
-        }
-
-
-        /* DESLIZAR HACIA LA DERECHA */
-
-        else if (diferencia > 50) {
-
-            productoActual--;
-
-            if (
-                productoActual < 0
-            ) {
-
-                productoActual =
-                    listaProductos.length - 1;
-
-            }
-
-            actualizarCarrusel();
-
-        }
-
-    }
-);
-
-
-    
 
 
 
