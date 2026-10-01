@@ -533,13 +533,10 @@ footer p {
     top: 50%;
     left: 50%;
 
-    width: 150px;
-    height: 280px;
-
     margin: 0;
 
-    overflow: hidden;
-    border-radius: 18px;
+    overflow: hidden !important;
+    border-radius: 30px !important;
 
     opacity: 0;
 
@@ -562,20 +559,27 @@ footer p {
     height: 100%;
 
     object-fit: contain;
+    border-radius: 30px 
 }
 
+#inicio-carrusel .hero-slide.active img {
+    border-radius: 30px !important;
+    clip-path: inset(0 round 30px);
+}
 
 /* TARJETA CENTRAL */
 
 #inicio-carrusel .hero-slide.active {
     width: 420px;
-    height: 580px;
+    height: 236px;
 
     opacity: 1;
 
     transform: translate(-50%, -50%) scale(1);
 
     z-index: 3;
+  border-radius: 30px;
+    overflow: hidden;
 }
 
 
@@ -2379,4 +2383,71 @@ body.categoria-cuadricula .dots {
     .hero {
         padding-top: 100px !important;
     }
+}
+
+/* REDES SOCIALES EN NOSOTROS */
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+    row-gap: 15px;
+    width: 50%;
+}
+
+.social-title {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.12);
+}
+
+@media (max-width: 700px) {
+
+    #nosotros {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #nosotros > div:first-child {
+        order: 1;
+    }
+
+    #nosotros .social-icons {
+        order: 2;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    #nosotros .back-home {
+        order: 3;
+    }
+
+}
+
+.product-social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
 }
