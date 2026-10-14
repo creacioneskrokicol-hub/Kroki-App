@@ -273,6 +273,7 @@
             productos[categoria];
 
         let productoActual = 0;
+        let fotoAlbumActual = 0;
 
 
         const track =
@@ -356,17 +357,22 @@ document.body.classList.add("categoria-cuadricula");
 
     </div>
 
+${producto.estado ?
+    `<span class="slide-status">${producto.estado}</span>` : ""}
+
     <div class="slide-info">
 
         <span class="slide-reference">
             ${producto.referencia}
         </span>
-
+        
         <h3>
             ${producto.nombre}
         </h3>
 
     </div>
+
+
 
 `;
 
@@ -479,17 +485,15 @@ function abrirZoom() {
     const producto =
         listaProductos[productoActual];
 
+    fotoAlbumActual = 0;
 
     zoomImage.src =
         producto.imagen;
 
-
     zoomImage.alt =
         producto.nombre;
 
-
     reiniciarZoom();
-
 
     zoomModal.classList.add(
         "active"
@@ -497,24 +501,84 @@ function abrirZoom() {
 
 }
 
-function productoAnterior() {
-    productoActual--;
+function obtenerAlbumActual() {
 
-    if (productoActual < 0) {
-        productoActual = listaProductos.length - 1;
+    const producto =
+        listaProductos[productoActual];
+
+    const nombreArchivo =
+        producto.imagen
+            .split("/")
+            .pop()
+            .replace(/\.[^/.]+$/, "");
+
+    const albumes = {
+
+        "52": ["A", "B"],
+
+        "53": ["A", "B", "C", "D"]
+
+    };
+
+    if (!albumes[nombreArchivo]) {
+
+        return [
+            producto.imagen
+        ];
+
     }
 
-    abrirZoom();
+    return [
+        producto.imagen,
+        ...albumes[nombreArchivo].map(
+            letra =>
+                `images/${nombreArchivo}${letra}.webp`
+        )
+    ];
+
+}
+
+
+function productoAnterior() {
+
+    const album =
+        obtenerAlbumActual();
+
+    fotoAlbumActual--;
+
+    if (fotoAlbumActual < 0) {
+        fotoAlbumActual = album.length - 1;
+    }
+
+    zoomImage.src =
+        album[fotoAlbumActual];
+
+    zoomImage.alt =
+        listaProductos[productoActual].nombre;
+
+    reiniciarZoom();
+
 }
 
 function productoSiguiente() {
-    productoActual++;
 
-    if (productoActual >= listaProductos.length) {
-        productoActual = 0;
+    const album =
+        obtenerAlbumActual();
+
+    fotoAlbumActual++;
+
+    if (fotoAlbumActual >= album.length) {
+        fotoAlbumActual = 0;
     }
 
-    abrirZoom();
+    zoomImage.src =
+        album[fotoAlbumActual];
+
+    zoomImage.alt =
+        listaProductos[productoActual].nombre;
+
+    reiniciarZoom();
+
 }
 
 

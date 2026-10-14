@@ -1243,6 +1243,23 @@ body#productos-page {
             z-index: -1;
         }
 
+        .slide-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    background: #1ee969;
+    color: white;
+
+    padding: 6px 12px;
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    z-index: 10;
+}
+
         .slide-reference {
             color: #ffffff;
 
@@ -2451,3 +2468,4 @@ body.categoria-cuadricula .dots {
     gap: 30px;
     width: 100%;
 }
+

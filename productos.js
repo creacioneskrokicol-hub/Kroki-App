@@ -390,7 +390,8 @@
         nombre: "W29 CO",
         referencia: "Pagina-53",
         descripcion: "Diseño Krokicol para dama.",
-        imagen: "images/53.webp"
+        imagen: "images/53.webp",
+        estado: "NUEVO"
     },
 
     {
