@@ -344,7 +344,7 @@ document.body.classList.add("categoria-cuadricula");
 
 
                     tarjeta.className =
-                        "slide";
+    `slide ${producto.estado ? producto.estado.toLowerCase() : ""}`;
 
 
                     tarjeta.innerHTML = `
@@ -358,7 +358,8 @@ document.body.classList.add("categoria-cuadricula");
     </div>
 
 ${producto.estado ?
-    `<span class="slide-status">${producto.estado}</span>` : ""}
+    `<span class="slide-status ${producto.estado === "ACTUALIZADO" ? 
+    "actualizado" : "nuevo"}">${producto.estado}</span>` : ""}
 
     <div class="slide-info">
 

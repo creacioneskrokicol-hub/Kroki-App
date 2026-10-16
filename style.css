@@ -260,27 +260,27 @@ a {
 
 /* BABY */
 .category[href*="categoria=baby"] {
-    background: #f7b6d2;
+    background: #ff469c;
 }
 
 /* NIÑO */
 .category[href*="categoria=nino"] {
-    background: #5ec8e5;
+    background: #08b1e0;
 }
 
 /* JUVENIL */
 .category[href*="categoria=juvenil"] {
-    background: #b8a0e8;
+    background: #7d48e9;
 }
 
 /* DAMA */
 .category[href*="categoria=dama"] {
-    background: #f05a9d !important;
+    background: #fa2473 !important;
 }
 
 /* HOMBRE */
 .category[href*="categoria=hombre"] {
-    background: #6872df !important;
+    background: #07128f !important;
 }
 
 .category:hover {
@@ -1248,7 +1248,7 @@ body#productos-page {
     top: 15px;
     right: 15px;
 
-    background: #1ee969;
+    background: #05c1ef;
     color: white;
 
     padding: 6px 12px;
@@ -1258,6 +1258,49 @@ body#productos-page {
     font-weight: bold;
 
     z-index: 10;
+}
+
+.slide-status.actualizado {
+    background: #05c41b;
+}
+
+/* ANIMACIÓN PARA PRODUCTOS NUEVOS O ACTUALIZADOS */
+
+@keyframes llamarAtencion {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.slide.nuevo,
+.slide.actualizado {
+    animation: llamarAtencion 1.5s ease-in-out infinite;
+}
+
+@keyframes llamarAtencion {
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    20% {
+        margin-top: -8px;
+    }
+
+    40% {
+        margin-top: 0;
+    }
+
+    55% {
+        margin-top: -4px;
+    }
+
+    70% {
+        margin-top: 0;
+    }
 }
 
         .slide-reference {
@@ -2469,3 +2512,94 @@ body.categoria-cuadricula .dots {
     width: 100%;
 }
 
+/* ========================================
+   INDICADORES DE NOVEDADES EN CATEGORÍAS
+======================================== */
+
+.category {
+    position: relative;
+}
+
+.category-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.status-dot {
+    display: block !important;
+
+    width: 20px !important;
+    height: 20px !important;
+
+    min-width: 20px !important;
+    max-width: 20px !important;
+
+    min-height: 20px !important;
+    max-height: 20px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+
+    box-sizing: border-box !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    border-radius: 50% !important;
+
+    flex: 0 0 12px !important;
+}
+
+.category:has(.category-status) {
+    animation: saltoNovedad 2s ease-in-out infinite;
+}
+
+@keyframes saltoNovedad {
+    0%, 100% {
+        top: 0;
+    }
+
+    15% {
+        top: -8px;
+    }
+
+    30% {
+        top: 0;
+    }
+
+    45% {
+        top: -4px;
+    }
+
+    60% {
+        top: 0;
+    }
+}
+
+.status-dot.nuevo {
+    background: #1565c0 !important;
+}
+
+.status-dot.actualizado {
+    background: #05c41b !important;
+}
+
+.category-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}

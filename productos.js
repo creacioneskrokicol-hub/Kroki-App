@@ -391,14 +391,15 @@
         referencia: "Pagina-53",
         descripcion: "Diseño Krokicol para dama.",
         imagen: "images/53.webp",
-        estado: "NUEVO"
+        estado: "ACTUALIZADO"
     },
 
     {
         nombre: "W30",
         referencia: "Pagina-54",
         descripcion: "Comodidad y estilo Krokicol.",
-        imagen: "images/54.webp"
+        imagen: "images/54.webp",
+    
     },
 
     {
