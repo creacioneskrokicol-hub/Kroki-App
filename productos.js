@@ -381,7 +381,7 @@
 
     {
         nombre: "W29 CC",
-        referencia: "Pagina-51",
+        referencia: "Pagina-52",
         descripcion: "Estilo y comodidad para cada ocasión.",
         imagen: "images/52.webp"
     },
