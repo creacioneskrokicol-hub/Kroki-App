@@ -201,7 +201,8 @@
         nombre: "W04 HK1",
         referencia: "Pagina-26",
         descripcion: "Estilo y comodidad Krokicol.",
-        imagen: "images/26.webp"
+        imagen: "images/26.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
@@ -379,19 +380,30 @@
         imagen: "images/51.webp"
     },
 
+
+    {
+        nombre: "W28 HK1",
+        referencia: "Pagina-52",
+        descripcion: "Estilo y comodidad para cada ocasión.",
+        imagen: "images/88.webp",
+        estado: "NUEVO"
+    },
+
+
     {
         nombre: "W29 CC",
         referencia: "Pagina-52",
         descripcion: "Estilo y comodidad para cada ocasión.",
-        imagen: "images/52.webp"
+        imagen: "images/52.webp",
+        estado: "ACTUALIZADO"
     },
+
 
     {
         nombre: "W29 CO",
         referencia: "Pagina-53",
         descripcion: "Diseño Krokicol para dama.",
-        imagen: "images/53.webp",
-        estado: "ACTUALIZADO"
+        imagen: "images/53.webp"
     },
 
     {
@@ -607,7 +619,8 @@
         nombre: "M29",
         referencia: "Pagina-83",
         descripcion: "Una propuesta diferente de Krokicol.",
-        imagen: "images/83.webp"
+        imagen: "images/83.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
@@ -641,30 +654,7 @@
 ],
 
 
-            otros: [
 
-                {
-                    nombre: "Producto 01",
-                    referencia: "OTR-001",
-                    precio: "$30.000",
-                    descripcion: "Producto Krokicol."
-                },
-
-                {
-                    nombre: "Producto 02",
-                    referencia: "OTR-002",
-                    precio: "$35.000",
-                    descripcion: "Una opción diferente de Krokicol."
-                },
-
-                {
-                    nombre: "Producto 03",
-                    referencia: "OTR-003",
-                    precio: "$40.000",
-                    descripcion: "Diseño y calidad Krokicol."
-                }
-
-            ]
 
         };
 
@@ -680,7 +670,7 @@
             juvenil: "JUVENIL",
             dama: "DAMA",
             hombre: "HOMBRE",
-            otros: "OTROS"
+        
 
         };
 
@@ -701,6 +691,6 @@
 
             hombre: "Comodidad y estilo para cada día.",
 
-            otros: "Descubre otros productos Krokicol."
+        
 
         };
