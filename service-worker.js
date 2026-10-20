@@ -1,4 +1,4 @@
-const CACHE_NAME = "krokicol-v31"
+const CACHE_NAME = "krokicol-v32"
 
 const ARCHIVOS = [
     "./",
@@ -20,21 +20,19 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
     event.respondWith(
-        caches.match(event.request, { ignoreSearch: true })
-            .then((respuesta) => {
-                if (respuesta) {
-                    return respuesta;
-                }
+        fetch(event.request)
+            .then((respuestaRed) => {
 
-                return fetch(event.request).then((respuestaRed) => {
-                    const copia = respuestaRed.clone();
+                const copia = respuestaRed.clone();
 
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, copia);
-                    });
-
-                    return respuestaRed;
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, copia);
                 });
+
+                return respuestaRed;
+            })
+            .catch(() => {
+                return caches.match(event.request, { ignoreSearch: true });
             })
     );
 });
