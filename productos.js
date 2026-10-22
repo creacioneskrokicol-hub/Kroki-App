@@ -362,7 +362,8 @@
         nombre: "I18 NE",
         referencia: "Pagina-47",
         descripcion: "Comodidad y estilo Krokicol.",
-        imagen: "images/47.webp"
+        imagen: "images/47.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
