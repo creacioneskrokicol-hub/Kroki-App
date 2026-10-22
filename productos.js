@@ -299,7 +299,8 @@
         nombre: "W15 HK1",
         referencia: "Pagina-38",
         descripcion: "Comodidad y personalidad Krokicol.",
-        imagen: "images/315.webp"
+        imagen: "images/315.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
