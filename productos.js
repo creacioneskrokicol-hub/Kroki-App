@@ -24,7 +24,8 @@
         nombre: "B15 PG.CO",
         referencia: "Pagina-3",
         descripcion: "Diseño Krokicol para bebé.",
-        imagen: "images/3.webp"
+        imagen: "images/3.webp",
+        estado: ""
     },
 
     {
@@ -38,7 +39,8 @@
         nombre: "B32 CO",
         referencia: "Pagina-5",
         descripcion: "Comodidad y estilo Krokicol.",
-        imagen: "images/5.webp"
+        imagen: "images/5.webp",
+        estado: ""
     }
 
 ],
@@ -157,11 +159,22 @@
         imagen: "images/20.webp"
     },
 
+     {
+        nombre: "J32 HK1",
+        referencia: "Pagina-21",
+        descripcion: "Una propuesta diferente de Krokicol.",
+        imagen: "images/121.webp",
+        estado: "NUEVO"
+
+    },
+
+
     {
         nombre: "J33-E.CC1",
         referencia: "Pagina-21",
         descripcion: "Una propuesta diferente de Krokicol.",
-        imagen: "images/21.webp"
+        imagen: "images/21.webp",
+        estado: ""
     },
 
     {
@@ -392,7 +405,7 @@
 
     {
         nombre: "W29 CC",
-        referencia: "Pagina-52",
+        referencia: "Pagina-53",
         descripcion: "Estilo y comodidad para cada ocasión.",
         imagen: "images/52.webp",
         estado: "ACTUALIZADO"
@@ -401,14 +414,14 @@
 
     {
         nombre: "W29 CO",
-        referencia: "Pagina-53",
+        referencia: "Pagina-54",
         descripcion: "Diseño Krokicol para dama.",
         imagen: "images/53.webp"
     },
 
     {
         nombre: "W30",
-        referencia: "Pagina-54",
+        referencia: "Pagina-55",
         descripcion: "Comodidad y estilo Krokicol.",
         imagen: "images/54.webp",
     
@@ -416,63 +429,63 @@
 
     {
         nombre: "W32 BL",
-        referencia: "Pagina-55",
+        referencia: "Pagina-56",
         descripcion: "Diseño pensado para cada ocasión.",
         imagen: "images/55.webp"
     },
 
     {
         nombre: "W32 CC",
-        referencia: "Pagina-56",
+        referencia: "Pagina-57",
         descripcion: "Estilo Krokicol para todos los días.",
         imagen: "images/56.webp"
     },
 
     {
         nombre: "W32-TE-CC",
-        referencia: "Pagina-57",
+        referencia: "Pagina-58",
         descripcion: "Comodidad y personalidad Krokicol.",
         imagen: "images/57.webp"
     },
 
     {
         nombre: "W32 CO",
-        referencia: "Pagina-58",
+        referencia: "Pagina-59",
         descripcion: "Diseño moderno y cómodo.",
         imagen: "images/58.webp"
     },
 
     {
         nombre: "W32-TE.CO",
-        referencia: "Pagina-59",
+        referencia: "Pagina-60",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/59.webp"
     },
 
     {
         nombre: "W32 HK1",
-        referencia: "Pagina-60",
+        referencia: "Pagina-61",
         descripcion: "Diseño Krokicol para dama.",
         imagen: "images/60.webp"
     },
 
     {
         nombre: "W33-E.CC",
-        referencia: "Pagina-61",
+        referencia: "Pagina-62",
         descripcion: "Una propuesta diferente de Krokicol.",
         imagen: "images/61.webp"
     },
 
     {
         nombre: "W33-E.CO",
-        referencia: "Pagina-62",
+        referencia: "Pagina-63",
         descripcion: "Comodidad y estilo para cada ocasión.",
         imagen: "images/62.webp"
     },
 
     {
         nombre: "W33E-1",
-        referencia: "Pagina-63",
+        referencia: "Pagina-64",
         descripcion: "Diseño Krokicol para dama.",
         imagen: "images/63.webp"
     }
@@ -484,140 +497,140 @@
 
     {
         nombre: "Hombre ",
-        referencia: "Pagina-64",
+        referencia: "Pagina-65",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/64.webp"
     },
 
     {
         nombre: "M03",
-        referencia: "Pagina-65",
+        referencia: "Pagina-66",
         descripcion: "Comodidad y estilo para cada ocasión.",
         imagen: "images/65.webp"
     },
 
     {
         nombre: "M09",
-        referencia: "Pagina-66",
+        referencia: "Pagina-67",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/66.webp"
     },
 
     {
         nombre: "M10",
-        referencia: "Pagina-67",
+        referencia: "Pagina-68",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/67.webp"
     },
 
     {
         nombre: "M12",
-        referencia: "Pagina-68",
+        referencia: "Pagina-69",
         descripcion: "Diseño pensado para cada ocasión.",
         imagen: "images/68.webp"
     },
 
     {
         nombre: "M14",
-        referencia: "Pagina-69",
+        referencia: "Pagina-70",
         descripcion: "Comodidad y estilo Krokicol.",
         imagen: "images/69.webp"
     },
 
     {
         nombre: "M15 PG",
-        referencia: "Pagina-70",
+        referencia: "Pagina-71",
         descripcion: "Una propuesta diferente de Krokicol.",
         imagen: "images/70.webp"
     },
 
     {
         nombre: "M15-TE.PG",
-        referencia: "Pagina-71",
+        referencia: "Pagina-72",
         descripcion: "Diseño Krokicol para expresar tu estilo.",
         imagen: "images/71.webp"
     },
 
     {
         nombre: "M16",
-        referencia: "Pagina-72",
+        referencia: "Pagina-73",
         descripcion: "Comodidad y personalidad Krokicol.",
         imagen: "images/72.webp"
     },
 
     {
         nombre: "M17",
-        referencia: "Pagina-73",
+        referencia: "Pagina-74",
         descripcion: "Diseño moderno Krokicol.",
         imagen: "images/73.webp"
     },
 
     {
         nombre: "I18 A",
-        referencia: "Pagina-74",
+        referencia: "Pagina-75",
         descripcion: "Estilo y comodidad para cada ocasión.",
         imagen: "images/74.webp"
     },
 
     {
         nombre: "I18 BL",
-        referencia: "Pagina-75",
+        referencia: "Pagina-76",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/75.webp"
     },
 
     {
         nombre: "I18 NE",
-        referencia: "Pagina-76",
+        referencia: "Pagina-77",
         descripcion: "Comodidad y estilo Krokicol.",
         imagen: "images/76.webp"
     },
 
     {
         nombre: "I19 BL",
-        referencia: "Pagina-77",
+        referencia: "Pagina-78",
         descripcion: "Diseño pensado para cada ocasión.",
         imagen: "images/77.webp"
     },
 
     {
         nombre: "I19 NE",
-        referencia: "Pagina-78",
+        referencia: "Pagina-79",
         descripcion: "Estilo Krokicol para todos los días.",
         imagen: "images/78.webp"
     },
 
     {
         nombre: "M22 N",
-        referencia: "Pagina-79",
+        referencia: "Pagina-80",
         descripcion: "Comodidad y personalidad Krokicol.",
         imagen: "images/79.webp"
     },
 
     {
         nombre: "M24 BL",
-        referencia: "Pagina-80",
+        referencia: "Pagina-81",
         descripcion: "Diseño moderno y cómodo.",
         imagen: "images/80.webp"
     },
 
     {
         nombre: "M24 NE",
-        referencia: "Pagina-81",
+        referencia: "Pagina-82",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/81.webp"
     },
 
     {
         nombre: "M26",
-        referencia: "Pagina-82",
+        referencia: "Pagina-83",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/82.webp"
     },
 
     {
         nombre: "M29",
-        referencia: "Pagina-83",
+        referencia: "Pagina-84",
         descripcion: "Una propuesta diferente de Krokicol.",
         imagen: "images/83.webp",
         estado: "ACTUALIZADO"
@@ -625,28 +638,28 @@
 
     {
         nombre: "M32",
-        referencia: "Pagina-84",
+        referencia: "Pagina-85",
         descripcion: "Comodidad y estilo para cada ocasión.",
         imagen: "images/84.webp"
     },
 
     {
         nombre: "M32-TE",
-        referencia: "Pagina-85",
+        referencia: "Pagina-86",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/85.webp"
     },
 
     {
         nombre: "M33-E",
-        referencia: "Pagina-86",
+        referencia: "Pagina-87",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/86.webp"
     },
 
     {
         nombre: "M33E-1",
-        referencia: "Pagina-87",
+        referencia: "Pagina-88",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/87.webp"
     }

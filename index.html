@@ -129,38 +129,18 @@
 </div>
 
 <div class="hero-slide">
-    <img src="./images/88B.webp" alt="Nuevo diseño 2">
+    <img src="./images/83A.webp" alt="Nuevo diseño 2">
+    <p class="hero-category">CATEGORÍA HOMBRE</p>
+</div>
+
+<div class="hero-slide">
+    <img src="./images/121A.webp" alt="Nuevo diseño 3">
+    <p class="hero-category">CATEGORÍA JUVENIL</p>
+</div>
+
+<div class="hero-slide">
+    <img src="./images/47A.webp" alt="Nuevo diseño 4">
     <p class="hero-category">CATEGORÍA DAMA</p>
-</div>
-
-<div class="hero-slide">
-    <img src="./images/88C.webp" alt="Nuevo diseño 3">
-    <p class="hero-category">CATEGORÍA DAMA</p>
-</div>
-
-<div class="hero-slide">
-    <img src="./images/88D.webp" alt="Nuevo diseño 4">
-    <p class="hero-category">CATEGORÍA DAMA</p>
-</div>
-
-<div class="hero-slide">
-    <img src="./images/83A.webp" alt="Nuevo diseño 5">
-    <p class="hero-category">CATEGORÍA HOMBRE</p>
-</div>
-
-<div class="hero-slide">
-    <img src="./images/83B.webp" alt="Nuevo diseño 6">
-    <p class="hero-category">CATEGORÍA HOMBRE</p>
-</div>
-
-<div class="hero-slide">
-    <img src="./images/83C.webp" alt="Nuevo diseño 7">
-    <p class="hero-category">CATEGORÍA HOMBRE</p>
-</div>
-
-<div class="hero-slide">
-    <img src="./images/83D.webp" alt="Nuevo diseño 8">
-    <p class="hero-category">CATEGORÍA HOMBRE</p>
 </div>
 
 </div>
@@ -203,8 +183,7 @@
         <span>NUEVOS</span>
     </div>
 
-
-    </div>
+</div>
 
     
 
@@ -224,9 +203,21 @@
                         BABY
                     </h3>
 
-                    <span>
-                        VER COLECCIÓN →
-                    </span>
+                    <div class="category-news">
+    <span>
+        <span class="status-dot nuevo"></span>
+        <span>NUEVOS</span>
+    </span>
+
+    <span>
+        <span class="status-dot actualizado"></span>
+        <span>ACTUALIZADOS</span>
+    </span>
+</div>
+
+                    <span class="category-collection">
+    VER COLECCIÓN →
+</span>
 
                 </a>
 
@@ -241,10 +232,22 @@
                     <h3>
                         NIÑO
                     </h3>
+                
+                    <div class="category-news">
+    <span>
+        <span class="status-dot nuevo"></span>
+        <span>NUEVOS</span>
+    </span>
 
-                    <span>
-                        VER COLECCIÓN →
-                    </span>
+    <span>
+        <span class="status-dot actualizado"></span>
+        <span>ACTUALIZADOS</span>
+    </span>
+</div>
+
+                    <span class="category-collection">
+    VER COLECCIÓN →
+</span>
 
                 </a>
 
@@ -257,12 +260,24 @@
 </div>
 
                     <h3>
-                        JUVENIL
-                    </h3>
+    JUVENIL
+</h3>
 
-                    <span>
-                        VER COLECCIÓN →
-                    </span>
+<div class="category-news">
+    <span>
+        <span class="status-dot nuevo"></span>
+        <span>NUEVOS</span>
+    </span>
+
+    <span>
+        <span class="status-dot actualizado"></span>
+        <span>ACTUALIZADOS</span>
+    </span>
+</div>
+
+<span class="category-collection">
+    VER COLECCIÓN →
+</span>
 
                 </a>
 
@@ -275,12 +290,24 @@
 </div>
 
                     <h3>
-                        DAMA
-                    </h3>
+    DAMA
+</h3>
 
-                    <span>
-                        VER COLECCIÓN →
-                    </span>
+<div class="category-news">
+    <span>
+        <span class="status-dot nuevo"></span>
+        <span>NUEVOS</span>
+    </span>
+
+    <span>
+        <span class="status-dot actualizado"></span>
+        <span>ACTUALIZADOS</span>
+    </span>
+</div>
+
+<span class="category-collection">
+    VER COLECCIÓN →
+</span>
 
                 </a>
 
@@ -296,9 +323,21 @@
                         HOMBRE
                     </h3>
 
-                    <span>
-                        VER COLECCIÓN →
-                    </span>
+                    <div class="category-news">
+    <span>
+        <span class="status-dot nuevo"></span>
+        <span>NUEVOS</span>
+    </span>
+
+    <span>
+        <span class="status-dot actualizado"></span>
+        <span>ACTUALIZADOS</span>
+    </span>
+</div>
+
+                    <span class="category-collection">
+    VER COLECCIÓN →
+</span>
 
                 </a>
 
@@ -394,9 +433,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-    const categorias = document.querySelectorAll(".category");
-
-    categorias.forEach(categoria => {
+    document.querySelectorAll(".category").forEach(categoria => {
 
         const url = categoria.getAttribute("href");
         const coincidencia = url.match(/categoria=([^&]+)/);
@@ -408,36 +445,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!productosCategoria) return;
 
-        const tieneNuevo = productosCategoria.some(
+        const cantidadNuevos = productosCategoria.filter(
             producto => producto.estado === "NUEVO"
-        );
+        ).length;
 
-        const tieneActualizado = productosCategoria.some(
+        const cantidadActualizados = productosCategoria.filter(
             producto => producto.estado === "ACTUALIZADO"
-        );
+        ).length;
 
-        if (!tieneNuevo && !tieneActualizado) return;
+        let indicador = categoria.querySelector(".category-news");
 
-        const indicador = document.createElement("div");
-        indicador.className = "category-status";
-
-        if (tieneNuevo) {
-            const puntoNuevo = document.createElement("span");
-            puntoNuevo.className = "status-dot nuevo";
-            indicador.appendChild(puntoNuevo);
+        if (!cantidadNuevos && !cantidadActualizados) {
+            if (indicador) indicador.remove();
+            return;
         }
 
-        if (tieneActualizado) {
-            const puntoActualizado = document.createElement("span");
-            puntoActualizado.className = "status-dot actualizado";
-            indicador.appendChild(puntoActualizado);
+        if (!indicador) {
+            indicador = document.createElement("div");
+            indicador.className = "category-news";
+            categoria.appendChild(indicador);
         }
 
-        const titulo = categoria.querySelector("h3");
+        indicador.innerHTML = "";
 
-if (titulo) {
-    titulo.appendChild(indicador);
-}
+        if (cantidadNuevos > 0) {
+
+            const nuevo = document.createElement("span");
+
+            nuevo.innerHTML = `
+                <span class="status-dot nuevo"></span>
+                <span>${cantidadNuevos} ${cantidadNuevos === 1 ? "NUEVO" : "NUEVOS"}</span>
+            `;
+
+            indicador.appendChild(nuevo);
+        }
+
+        if (cantidadActualizados > 0) {
+
+            const actualizado = document.createElement("span");
+
+            actualizado.innerHTML = `
+                <span class="status-dot actualizado"></span>
+                <span>${cantidadActualizados} ${cantidadActualizados === 1 ? "ACTUALIZADO" : "ACTUALIZADOS"}</span>
+            `;
+
+            indicador.appendChild(actualizado);
+        }
+
     });
 
 });
