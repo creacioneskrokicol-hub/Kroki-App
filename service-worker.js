@@ -1,4 +1,4 @@
-const CACHE_NAME = "krokicol-v39"
+const CACHE_NAME = "krokicol-v40"
 
 const ARCHIVOS = [
     "./",

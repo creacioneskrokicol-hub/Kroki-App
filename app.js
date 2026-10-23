@@ -118,24 +118,42 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentImage = 0;
 
 
-    // ===============================
-    // ABRIR IMAGEN
-    // ===============================
 
-    heroImages.forEach((img, index) => {
+/* =========================================
+   VISOR DEL CARRUSEL Y BOTÓN ATRÁS
+========================================= */
 
-        img.addEventListener("click", () => {
+let historialVisorInicio = false;
 
-            currentImage = index;
+heroImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+        currentImage = index;
 
-            imageModalImg.src = img.src;
-            imageModalImg.alt = img.alt;
+        imageModalImg.src = img.src;
+        imageModalImg.alt = img.alt;
 
-            imageModal.classList.add("active");
+        imageModal.classList.add("active");
 
-        });
-
+        if (!historialVisorInicio) {
+            historialVisorInicio = true;
+            history.pushState(
+                { visorKrokiInicio: true },
+                ""
+            );
+        }
     });
+});
+
+/* Cerrar el visor con Atrás */
+window.addEventListener("popstate", () => {
+    if (imageModal.classList.contains("active")) {
+        imageModal.classList.remove("active");
+        imageModalImg.src = "";
+    }
+
+    historialVisorInicio = false;
+});
+
 
 
     // ===============================

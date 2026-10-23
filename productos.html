@@ -475,6 +475,7 @@ function reiniciarZoom() {
 /* ================================================
    ABRIR ZOOM
 ================================================ */
+let historialVisorProductos = false;
 
 function abrirZoom() {
 
@@ -494,6 +495,15 @@ function abrirZoom() {
     zoomModal.classList.add(
         "active"
     );
+
+    if (!historialVisorProductos) {
+    historialVisorProductos = true;
+
+    history.pushState(
+        { visorKrokiProductos: true },
+        ""
+    );
+}
 
 }
 
@@ -594,6 +604,19 @@ function cerrarZoom() {
     );
 
 }
+
+
+/* =========================================
+   CERRAR VISOR AL PRESIONAR ATRÁS
+========================================= */
+
+window.addEventListener("popstate", () => {
+    if (zoomModal.classList.contains("active")) {
+        zoomModal.classList.remove("active");
+    }
+
+    historialVisorProductos = false;
+});
 
 
 /* ================================================
