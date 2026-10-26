@@ -215,7 +215,7 @@
         referencia: "Pagina-26",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/303.webp",
-        estado: "ACTUALIZADO"
+        estado: "NUEVO"
     },
 
     {
@@ -300,7 +300,7 @@
         referencia: "Pagina-38",
         descripcion: "Comodidad y personalidad Krokicol.",
         imagen: "images/315.webp",
-        estado: "ACTUALIZADO"
+        estado: "NUEVO"
     },
 
     {
@@ -364,7 +364,7 @@
         referencia: "Pagina-47",
         descripcion: "Comodidad y estilo Krokicol.",
         imagen: "images/324.webp",
-        estado: "ACTUALIZADO"
+        estado: "NUEVO"
     },
 
     {

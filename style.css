@@ -2693,3 +2693,49 @@ body.categoria-cuadricula .dots {
 .category-news > span:has(.status-dot.actualizado) {
     background: #05c41b !important;
 }
+
+
+/* BOTÓN VER - TARJETAS KROKI */
+
+.slide-ver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 12px;
+    padding: 9px 20px;
+
+    background: #f1f3f4;
+    color: #240469;
+
+    border: none;
+    border-radius: 25px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.slide-ver span {
+    font-size: 17px;
+    transition: transform 0.25s ease;
+}
+
+.slide-ver:hover {
+    background: #1aa3f2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.slide-ver:hover span {
+    transform: translateX(4px);
+}
+
+.slide-ver:active {
+    transform: scale(0.96);
+}
