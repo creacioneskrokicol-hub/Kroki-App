@@ -40,7 +40,7 @@
         referencia: "Pagina-5",
         descripcion: "Comodidad y estilo Krokicol.",
         imagen: "images/5.webp",
-        estado: ""
+        estado: "ACTUALIZADO"
     }
 
 ],

@@ -186,31 +186,44 @@
 
 
 
-    <div class="zoom-content">
+    
+<div class="zoom-content">
 
-    <!-- FLECHA PRODUCTO ANTERIOR -->
+    <img
+        id="zoom-preview-left"
+        class="zoom-preview zoom-preview-left"
+        src=""
+        alt=""
+        aria-hidden="true">
+
     <button
         id="zoom-prev"
         class="zoom-arrow zoom-prev"
-        aria-label="Producto anterior">
+        aria-label="Foto anterior">
         ‹
     </button>
 
-    <!-- IMAGEN DEL PRODUCTO -->
     <img
         id="zoom-image"
         src=""
         alt="Producto Krokicol">
 
-    <!-- FLECHA PRODUCTO SIGUIENTE -->
     <button
         id="zoom-next"
         class="zoom-arrow zoom-next"
-        aria-label="Producto siguiente">
+        aria-label="Foto siguiente">
         ›
     </button>
 
+    <img
+        id="zoom-preview-right"
+        class="zoom-preview zoom-preview-right"
+        src=""
+        alt=""
+        aria-hidden="true">
+
 </div>
+
 
 
 
@@ -432,6 +445,11 @@ const zoomOut =
 
 const zoomPrev = document.getElementById("zoom-prev");
 const zoomNext = document.getElementById("zoom-next");
+const zoomPreviewLeft =
+    document.getElementById("zoom-preview-left");
+
+const zoomPreviewRight =
+    document.getElementById("zoom-preview-right");
 
 
 /* ================================================
@@ -497,10 +515,12 @@ function abrirZoom() {
         producto.nombre;
 
     reiniciarZoom();
+    
 
     zoomModal.classList.add(
         "active"
     );
+    actualizarVistasLaterales();
 
     if (!historialVisorProductos) {
     historialVisorProductos = true;
@@ -526,6 +546,8 @@ function obtenerAlbumActual() {
 
     const albumes = {
         
+        
+        "5": ["A", "B", "C", "D"],
         "207": ["A", "B", "C", "D"],
         "303": ["A", "B", "C", "D"],
         "315": ["A", "B", "C", "D"],
@@ -555,6 +577,32 @@ function obtenerAlbumActual() {
 }
 
 
+function actualizarVistasLaterales() {
+    const album = obtenerAlbumActual();
+
+    const total = album.length;
+
+    if (total <= 1) {
+        zoomPreviewLeft.style.display = "none";
+        zoomPreviewRight.style.display = "none";
+        return;
+    }
+
+    const anterior =
+        (fotoAlbumActual - 1 + total) % total;
+
+    const siguiente =
+        (fotoAlbumActual + 1) % total;
+
+    zoomPreviewLeft.src = album[anterior];
+    zoomPreviewRight.src = album[siguiente];
+
+    zoomPreviewLeft.style.display = "";
+    zoomPreviewRight.style.display = "";
+}
+
+
+
 function productoAnterior() {
 
     const album =
@@ -573,6 +621,7 @@ function productoAnterior() {
         listaProductos[productoActual].nombre;
 
     reiniciarZoom();
+    actualizarVistasLaterales();
 
 }
 
@@ -594,6 +643,7 @@ function productoSiguiente() {
         listaProductos[productoActual].nombre;
 
     reiniciarZoom();
+    actualizarVistasLaterales();
 
 }
 
