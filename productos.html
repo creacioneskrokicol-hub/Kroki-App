@@ -32,13 +32,29 @@
     <header class="header">
 
     <!-- SECCIÓN 1: LOGO -->
-    <div class="header-logo-section">
+    
+<div class="header-logo-section">
+
+    <div class="kroki-encabezado">
+
+        <div class="kroki-zapatos kroki-zapatos-izq">
+            <img src="./images/B1.webp" alt="">
+            <img src="./images/J1.webp" alt="">
+        </div>
 
         <a href="index.html" class="logo">
             KROKI
         </a>
 
+        <div class="kroki-zapatos kroki-zapatos-der">
+            <img src="./images/N1.webp" alt="">
+            <img src="./images/H1.webp" alt="">
+        </div>
+
     </div>
+
+</div>
+
 
 
     <!-- SECCIÓN 2: MENÚ -->
@@ -224,6 +240,11 @@
 
 </div>
 
+
+<div class="zoom-hint" id="zoom-hint">
+    <span class="zoom-hint-arrows">↔</span>
+    <span>Desliza para ver más fotos</span>
+</div>
 
 
 
@@ -522,6 +543,16 @@ function abrirZoom() {
     );
     actualizarVistasLaterales();
 
+    const pistaDeslizar = document.getElementById("zoom-hint");
+
+pistaDeslizar.classList.remove("oculto");
+
+clearTimeout(window.temporizadorPistaKroki);
+
+window.temporizadorPistaKroki = setTimeout(() => {
+    pistaDeslizar.classList.add("oculto");
+}, 5000);
+
     if (!historialVisorProductos) {
     historialVisorProductos = true;
 
@@ -555,6 +586,7 @@ function obtenerAlbumActual() {
         "329": ["A", "B", "C", "D"],
         "330": ["A", "B"],
         "419": ["A", "B", "C", "D"],
+        "424": ["A", "B", "C", "D"],
 
     };
 
@@ -605,6 +637,9 @@ function actualizarVistasLaterales() {
 
 function productoAnterior() {
 
+    document.getElementById("zoom-hint").classList.add("oculto");
+clearTimeout(window.temporizadorPistaKroki);
+
     const album =
         obtenerAlbumActual();
 
@@ -626,6 +661,9 @@ function productoAnterior() {
 }
 
 function productoSiguiente() {
+
+    document.getElementById("zoom-hint").classList.add("oculto");
+clearTimeout(window.temporizadorPistaKroki);
 
     const album =
         obtenerAlbumActual();

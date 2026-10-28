@@ -1473,35 +1473,83 @@ body#productos-page {
    ZOOM EN CELULAR
    ========================================= */
 
+
+/* =========================================
+   ZOOM RESPONSIVE KROKI
+   Imagen principal y laterales independientes
+========================================= */
+
 @media (max-width: 600px) {
 
     .zoom-modal {
         padding: 0;
-    }
-
-    .zoom-content {
-        width: 100vw;
-        height: 100vh;
-
-        padding: 0;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
         overflow: hidden;
     }
 
-    .zoom-content img {
+    .zoom-content {
+        position: relative;
         width: 100vw;
+        height: 100dvh;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    /* Foto principal */
+    .zoom-content #zoom-image {
+        position: relative;
+        display: block;
+        width: auto;
         height: auto;
-
-        max-width: none;
-        max-height: none;
-
+        max-width: 68vw;
+        max-height: 75dvh;
         object-fit: contain;
+        object-position: center;
+        margin: 0 auto;
+        flex: 0 1 auto;
+        z-index: 3;
+    }
+
+    /* Fotos laterales */
+    .zoom-content .zoom-preview {
+        position: absolute;
+        top: 50%;
+        width: 23vw;
+        height: auto;
+        max-width: 23vw;
+        max-height: 40dvh;
+        object-fit: contain;
+        transform: translateY(-50%) scale(0.88);
+        opacity: 0.4;
+        filter: brightness(0.45);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .zoom-content .zoom-preview-left {
+        left: 0;
+        right: auto;
+    }
+
+    .zoom-content .zoom-preview-right {
+        right: 0;
+        left: auto;
+    }
+
+    /* Flechas */
+    .zoom-content .zoom-prev {
+        left: 5px;
+        z-index: 20;
+    }
+
+    .zoom-content .zoom-next {
+        right: 5px;
+        z-index: 20;
     }
 }
+
 
 /* =========================================
    FLECHAS DEL ZOOM
@@ -3021,4 +3069,262 @@ body.categoria-cuadricula .dots {
         width: 42px;
         height: 42px;
     }
+}
+
+
+/* CORRECCIÓN DE FRANJAS EN LAS TARJETAS */
+
+@media (max-width: 600px) {
+    .category-placeholder {
+        background: transparent !important;
+        overflow: hidden;
+    }
+
+    .category-placeholder img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+        background: transparent !important;
+    }
+}
+
+
+
+/* Ajuste del carrusel en celulares y ventanas estrechas */
+@media (max-width: 700px) {
+    .hero-modal-image {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 82vw;
+        max-height: 68dvh;
+        object-fit: contain;
+        object-position: center center;
+        margin: auto;
+        flex-shrink: 0;
+    }
+}
+
+
+/* KROKI: mantener las fotos laterales estables en pantallas pequeñas */
+@media (max-width: 700px) {
+    .hero-modal {
+        overflow: hidden;
+    }
+
+    .hero-modal-image {
+        display: block;
+        max-width: 82vw;
+        max-height: 68dvh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+        margin: auto;
+        flex-shrink: 0;
+    }
+}
+
+
+/* =================================
+   INDICADOR ANIMADO DE MÁS FOTOS
+================================= */
+
+.zoom-hint {
+    position: fixed;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    z-index: 10001;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 12px 20px;
+    border-radius: 30px;
+
+    background: rgba(15, 20, 50, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    pointer-events: none;
+    animation: hint-aparecer 0.5s ease both;
+}
+
+.zoom-hint-arrows {
+    display: inline-block;
+    color: #10e117;
+    font-size: 28px;
+    line-height: 1;
+    animation: hint-deslizar 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes hint-deslizar {
+    from {
+        transform: translateX(-5px);
+    }
+    to {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes hint-aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.zoom-hint.oculto {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .zoom-hint {
+        bottom: 100px;
+        font-size: 12px;
+        padding: 10px 15px;
+        gap: 7px;
+    }
+
+    .zoom-hint-arrows {
+        font-size: 25px;
+    }
+}
+
+
+/* Icono SORP junto al indicador de nuevos productos */
+.category-news .fila-nuevos {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    width: 100%;
+}
+
+.category-news .icono-sorp {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+    animation: sorpresaPulso 1.5s ease-in-out infinite;
+}
+
+.category-news .fila-nuevos > span {
+    flex-shrink: 0;
+}
+
+@keyframes sorpresaPulso {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* Corrección de alineación del icono SORP */
+.category-news .fila-nuevos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    width: 100%;
+}
+
+.category-news .fila-nuevos .icono-sorp {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+
+
+.category-news .fila-nuevos {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.category-news .nuevo-con-sorpresa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.category-news .nuevo-con-sorpresa .icono-sorp {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* Fila de nuevos productos e icono SORP */
+.category-news .fila-nuevos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    width: 100%;
+}
+
+.category-news .fila-nuevos .icono-sorp {
+    display: block;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+    position: static;
+    margin: 0;
+    animation: sorpresaPulso 1.5s ease-in-out infinite;
+}
+
+/* Mantener el indicador NUEVO como una pastilla azul */
+.category-news .fila-nuevos .nuevo-con-sorpresa {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 105px;
+    height: 28px;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: #2380ea;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.category-news .fila-nuevos .nuevo-con-sorpresa > span:not(.status-dot) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 9px;
 }

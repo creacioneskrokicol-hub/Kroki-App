@@ -603,36 +603,45 @@
     },
 
     {
-        nombre: "M22 N",
+        nombre: "W20",
         referencia: "Pagina-80",
         descripcion: "Comodidad y personalidad Krokicol.",
+        imagen: "images/424.webp",
+        estado: "NUEVO"
+    },
+
+    {
+        nombre: "M22 N",
+        referencia: "Pagina-81",
+        descripcion: "Comodidad y personalidad Krokicol.",
         imagen: "images/415.webp"
+        
     },
 
     {
         nombre: "M24 BL",
-        referencia: "Pagina-81",
+        referencia: "Pagina-82",
         descripcion: "Diseño moderno y cómodo.",
         imagen: "images/416.webp"
     },
 
     {
         nombre: "M24 NE",
-        referencia: "Pagina-82",
+        referencia: "Pagina-83",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/417.webp"
     },
 
     {
         nombre: "M26",
-        referencia: "Pagina-83",
+        referencia: "Pagina-84",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/418.webp"
     },
 
     {
         nombre: "M29",
-        referencia: "Pagina-84",
+        referencia: "Pagina-85",
         descripcion: "Una propuesta diferente de Krokicol.",
         imagen: "images/419.webp",
         estado: "ACTUALIZADO"
@@ -640,28 +649,28 @@
 
     {
         nombre: "M32",
-        referencia: "Pagina-85",
+        referencia: "Pagina-86",
         descripcion: "Comodidad y estilo para cada ocasión.",
         imagen: "images/420.webp"
     },
 
     {
         nombre: "M32-TE",
-        referencia: "Pagina-86",
+        referencia: "Pagina-87",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/421.webp"
     },
 
     {
         nombre: "M33-E",
-        referencia: "Pagina-87",
+        referencia: "Pagina-88",
         descripcion: "Estilo y comodidad Krokicol.",
         imagen: "images/422.webp"
     },
 
     {
         nombre: "M33E-1",
-        referencia: "Pagina-88",
+        referencia: "Pagina-89",
         descripcion: "Diseño Krokicol para hombre.",
         imagen: "images/423.webp"
     }

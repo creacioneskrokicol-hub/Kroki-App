@@ -150,27 +150,32 @@
         <div class="hero-slides">
 
     <div class="hero-slide">
-    <img src="./images/324A.webp" alt="Nuevo diseño 1">
+    <img src="./images/424B.webp" alt="Nuevo diseño 1">
+    <p class="hero-category">CATEGORÍA HOMBRE</p>
+</div>
+    
+            <div class="hero-slide">
+    <img src="./images/324A.webp" alt="Nuevo diseño 2">
     <p class="hero-category">CATEGORÍA DAMA</p>
 </div>
 
 <div class="hero-slide">
-    <img src="./images/419A.webp" alt="Nuevo diseño 2">
+    <img src="./images/419A.webp" alt="Nuevo diseño 3">
     <p class="hero-category">CATEGORÍA HOMBRE</p>
 </div>
 
 <div class="hero-slide">
-    <img src="./images/207A.webp" alt="Nuevo diseño 3">
+    <img src="./images/207A.webp" alt="Nuevo diseño 4">
     <p class="hero-category">CATEGORÍA JUVENIL</p>
 </div>
 
 <div class="hero-slide">
-    <img src="./images/329B.webp" alt="Nuevo diseño 4">
+    <img src="./images/329B.webp" alt="Nuevo diseño 5">
     <p class="hero-category">CATEGORÍA DAMA</p>
 </div>
 
 <div class="hero-slide">
-    <img src="./images/315D.webp" alt="Nuevo diseño 4">
+    <img src="./images/315D.webp" alt="Nuevo diseño 6">
     <p class="hero-category">CATEGORÍA DAMA</p>
 </div>
 
@@ -544,17 +549,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         indicador.innerHTML = "";
 
-        if (cantidadNuevos > 0) {
+        
 
-            const nuevo = document.createElement("span");
 
-            nuevo.innerHTML = `
-                <span class="status-dot nuevo"></span>
-                <span>${cantidadNuevos} ${cantidadNuevos === 1 ? "NUEVO" : "NUEVOS"}</span>
-            `;
 
-            indicador.appendChild(nuevo);
-        }
+if (cantidadNuevos > 0) {
+    const filaNuevos = document.createElement("div");
+    filaNuevos.className = "fila-nuevos";
+
+    const sorpresa = document.createElement("img");
+    sorpresa.src = "./images/SORP.webp";
+    sorpresa.alt = "Nuevos productos";
+    sorpresa.className = "icono-sorp";
+
+    const nuevo = document.createElement("span");
+    nuevo.className = "nuevo-con-sorpresa";
+
+    nuevo.innerHTML = `
+        <span class="status-dot nuevo"></span>
+        <span>${cantidadNuevos} ${cantidadNuevos === 1 ? "NUEVO" : "NUEVOS"}</span>
+    `;
+
+    filaNuevos.appendChild(sorpresa);
+    filaNuevos.appendChild(nuevo);
+    indicador.appendChild(filaNuevos);
+}
+
+
+
+
 
         if (cantidadActualizados > 0) {
 
