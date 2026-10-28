@@ -3328,3 +3328,20 @@ body.categoria-cuadricula .dots {
     padding: 0;
     font-size: 9px;
 }
+
+
+/* Carita SORP dentro de la etiqueta NUEVO */
+.slide-status.nuevo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.slide-status-sorp {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+

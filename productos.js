@@ -682,6 +682,20 @@
 
         };
 
+        
+/* ================================================
+   NUMERACIÓN AUTOMÁTICA DE PÁGINAS
+================================================ */
+
+let numeroPagina = 1;
+
+Object.values(productos).forEach(categoria => {
+    categoria.forEach(producto => {
+        producto.referencia = `Pagina-${numeroPagina}`;
+        numeroPagina++;
+    });
+});
+
 
         /* ================================================
            NOMBRES DE CATEGORÍAS

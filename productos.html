@@ -386,9 +386,16 @@ document.body.classList.add("categoria-cuadricula");
 
     </div>
 
+
 ${producto.estado ?
     `<span class="slide-status ${producto.estado === "ACTUALIZADO" ? 
-    "actualizado" : "nuevo"}">${producto.estado}</span>` : ""}
+    "actualizado" : "nuevo"}">
+        ${producto.estado === "NUEVO" ? 
+            '<img src="./images/SORP.webp" class="slide-status-sorp" alt="">' 
+            : ""}
+        ${producto.estado}
+    </span>` : ""}
+
 
     <div class="slide-info">
 
