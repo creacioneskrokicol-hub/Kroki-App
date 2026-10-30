@@ -349,14 +349,16 @@
         nombre: "I18 A",
         referencia: "Pagina-45",
         descripcion: "Estilo y comodidad Krokicol.",
-        imagen: "images/322.webp"
+        imagen: "images/322.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
         nombre: "I18 BL",
         referencia: "Pagina-46",
         descripcion: "Diseño pensado para cada ocasión.",
-        imagen: "images/323.webp"
+        imagen: "images/323.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
@@ -385,14 +387,16 @@
         nombre: "W24 BL",
         referencia: "Pagina-50",
         descripcion: "Comodidad y personalidad Krokicol.",
-        imagen: "images/327.webp"
+        imagen: "images/327.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
         nombre: "W24 NE",
         referencia: "Pagina-51",
         descripcion: "Diseño moderno Krokicol.",
-        imagen: "images/328.webp"
+        imagen: "images/328.webp",
+        estado: "ACTUALIZADO"
     },
 
 
@@ -433,7 +437,8 @@
         nombre: "W32 BL",
         referencia: "Pagina-56",
         descripcion: "Diseño pensado para cada ocasión.",
-        imagen: "images/333.webp"
+        imagen: "images/333.webp",
+        estado: ""
     },
 
     {
@@ -468,7 +473,8 @@
         nombre: "W32 HK1",
         referencia: "Pagina-61",
         descripcion: "Diseño Krokicol para dama.",
-        imagen: "images/338.webp"
+        imagen: "images/338.webp",
+        estado: "NUEVO"
     },
 
     {
@@ -571,21 +577,24 @@
         nombre: "I18 A",
         referencia: "Pagina-75",
         descripcion: "Estilo y comodidad para cada ocasión.",
-        imagen: "images/410.webp"
+        imagen: "images/410.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
         nombre: "I18 BL",
         referencia: "Pagina-76",
         descripcion: "Diseño Krokicol para hombre.",
-        imagen: "images/411.webp"
+        imagen: "images/411.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
         nombre: "I18 NE",
         referencia: "Pagina-77",
         descripcion: "Comodidad y estilo Krokicol.",
-        imagen: "images/412.webp"
+        imagen: "images/412.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
@@ -622,14 +631,16 @@
         nombre: "M24 BL",
         referencia: "Pagina-82",
         descripcion: "Diseño moderno y cómodo.",
-        imagen: "images/416.webp"
+        imagen: "images/416.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
         nombre: "M24 NE",
         referencia: "Pagina-83",
         descripcion: "Estilo y comodidad Krokicol.",
-        imagen: "images/417.webp"
+        imagen: "images/417.webp",
+        estado: "ACTUALIZADO"
     },
 
     {
