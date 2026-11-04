@@ -1278,8 +1278,7 @@ body#productos-page {
     }
 }
 
-.slide.nuevo,
-.slide.actualizado {
+.slide.nuevo {
     animation: llamarAtencion 1.5s ease-in-out infinite;
 }
 
