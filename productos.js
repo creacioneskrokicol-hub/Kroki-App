@@ -32,7 +32,8 @@
         nombre: "B32 CC",
         referencia: "Pagina-4",
         descripcion: "Nuevo diseño Krokicol.",
-        imagen: "images/4.webp"
+        imagen: "images/4.webp",
+        estado: ""
     },
 
     {
@@ -438,7 +439,7 @@
         referencia: "Pagina-56",
         descripcion: "Diseño pensado para cada ocasión.",
         imagen: "images/333.webp",
-        estado: ""
+        estado: "ACTUALIZADO"
     },
 
     {

@@ -710,26 +710,40 @@ clearTimeout(window.temporizadorPistaKroki);
    CERRAR ZOOM
 ================================================ */
 
+
 function cerrarZoom() {
 
-    zoomModal.classList.remove(
-        "active"
-    );
+    if (!zoomModal.classList.contains("active")) {
+        return;
+    }
+
+    // Si el visor abrió una entrada en el historial,
+    // regresar a la categoría sin salir de ella.
+    if (historialVisorProductos) {
+        history.back();
+    } else {
+        zoomModal.classList.remove("active");
+    }
 
 }
+
 
 
 /* =========================================
    CERRAR VISOR AL PRESIONAR ATRÁS
 ========================================= */
 
+
 window.addEventListener("popstate", () => {
+
     if (zoomModal.classList.contains("active")) {
         zoomModal.classList.remove("active");
     }
 
     historialVisorProductos = false;
+
 });
+
 
 
 /* ================================================
