@@ -431,13 +431,12 @@ document.body.classList.add("categoria-cuadricula");
     </div>
 
 
-${producto.estado ?
-    `<span class="slide-status ${producto.estado === "ACTUALIZADO" ? 
-    "actualizado" : "nuevo"}">
-        ${producto.estado === "NUEVO" ? 
+${producto.estado && producto.estado.toUpperCase() !== "NORMAL" ? `
+    <span class="slide-status ${producto.estado.toUpperCase() === "ACTUALIZADO" ? "actualizado" : "nuevo"}">
+        ${producto.estado.toUpperCase() === "NUEVO" ? 
             '<img src="./images/SORP.webp" class="slide-status-sorp" alt="">' 
             : ""}
-        ${producto.estado}
+        ${producto.estado.toUpperCase()}
     </span>` : ""}
 
 
