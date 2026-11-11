@@ -265,46 +265,94 @@
     </main>
 
 
-    <!-- ==================================================
-         JAVASCRIPT
-    =================================================== -->
 
-    <script src="productos.js"></script>
+<script type="module">
 
-<script>
-
-    /* =========================
-       OBTENER CATEGORÍA DE LA URL
-    ========================= */
-
-    const parametros = new URLSearchParams(
-        window.location.search
-    );
-
-        let categoria =
-            parametros.get("categoria");
+    import { supabase } from "./supabase.js";
 
 
-        if (!productos[categoria]) {
-            categoria = "baby";
-        }
 
 
-        /* ================================================
-           VARIABLES
-        ================================================= */
+/* =========================
+   OBTENER CATEGORÍA DE LA URL
+========================= */
 
-        const listaProductos =
-            productos[categoria];
+const parametros = new URLSearchParams(
+    window.location.search
+);
 
-        let productoActual = 0;
-        let fotoAlbumActual = 0;
+let categoria = parametros.get("categoria");
 
+const categoriasValidas = [
+    "baby",
+    "nino",
+    "juvenil",
+    "dama",
+    "hombre"
+];
 
-        const track =
-            document.getElementById(
-                "carousel-track"
-            );
+if (!categoriasValidas.includes(categoria)) {
+    categoria = "baby";
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+let productoActual = 0;
+let fotoAlbumActual = 0;
+
+const track = document.getElementById("carousel-track");
+
+const nombresCategorias = {
+    baby: "BABY",
+    nino: "NIÑO",
+    juvenil: "JUVENIL",
+    dama: "DAMA",
+    hombre: "HOMBRE"
+};
+
+const descripciones = {
+    baby: "Descubre nuestra colección para los más pequeños.",
+    nino: "Descubre nuestra colección para niños.",
+    juvenil: "Descubre nuestra colección juvenil.",
+    dama: "Descubre nuestra colección para dama.",
+    hombre: "Descubre nuestra colección para hombre."
+};
+
+/* =========================
+   CONSULTAR SUPABASE
+========================= */
+
+track.textContent = "Cargando productos...";
+
+const { data: productosBD, error } = await supabase
+    .from("productos")
+    .select("*")
+    .eq("activo", true)
+    .order("orden_catalogo", { ascending: true });
+
+if (error) {
+    console.error("Error al cargar productos:", error);
+    track.textContent = "No se pudieron cargar los productos.";
+    throw error;
+}
+
+/* =========================
+   FILTRAR CATEGORÍA
+========================= */
+
+const listaProductos = productosBD
+    .filter(producto => producto.categoria === categoria)
+    .map(producto => ({
+        ...producto,
+        referencia: `Pagina-${producto.orden_catalogo}`
+    }));
+
+if (listaProductos.length === 0) {
+    track.textContent = "No hay productos disponibles en esta categoría.";
+}
+
 
 /* ================================================
    MODO CUADRÍCULA PARA TODAS LAS CATEGORÍAS
@@ -1306,7 +1354,6 @@ document.addEventListener(
 })();
 </script>
 
-</script>
 
 <!-- BARRA INFERIOR -->
 <footer>
@@ -1320,8 +1367,4 @@ document.addEventListener(
 </footer>
 
 </body>
-</html>
-
-</body>
-
 </html>

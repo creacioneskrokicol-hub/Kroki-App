@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel administrativo | KROKI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="admin-page">
+
+    <header class="admin-header">
+        <h1>KROKICOL</h1>
+        <p>Panel de administración</p>
+    </header>
+
+    <main class="admin-container">
+
+        <section class="admin-welcome">
+            <h2>Bienvenido al administrador</h2>
+            <p>Desde aquí podrás gestionar el catálogo de productos KROKI.</p>
+        </section>
+
+        <section class="admin-section">
+
+            <h2>Gestión de productos</h2>
+
+            <div class="admin-actions">
+
+                <button type="button" id="add-product">
+                    + Agregar producto
+                </button>
+
+                <button type="button" id="logout-button">
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+            <div id="admin-message"></div>
+
+            <!-- FORMULARIO DE PRODUCTOS -->
+
+            <section id="product-form-container" hidden>
+
+                <h2 id="form-title">Registrar nuevo producto</h2>
+
+                <form id="product-form">
+
+                    <div class="admin-form-group">
+                        <label for="product-name">Nombre del producto</label>
+                        <input
+                            type="text"
+                            id="product-name"
+                            required
+                            placeholder="Ej. Sandalia infantil">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-reference">Referencia</label>
+                        <input
+                            type="text"
+                            id="product-reference"
+                            required
+                            placeholder="Ej. J24 BL">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-category">Categoría</label>
+
+                        <select id="product-category" required>
+                            <option value="">Seleccionar categoría</option>
+                            
+<option value="baby">Baby</option>
+<option value="nino">Niño</option>
+<option value="juvenil">Juvenil</option>
+<option value="dama">Dama</option>
+<option value="hombre">Hombre</option>
+
+                        </select>
+                    </div>
+
+
+<div class="admin-form-group">
+    <label for="product-position">Posición en el catálogo</label>
+    <input
+        type="number"
+        id="product-position"
+        min="1"
+        step="1"
+        required
+        placeholder="Ej. 25"
+    >
+    <small>Indica la posición donde aparecerá el producto.</small>
+</div>
+
+
+                    <div class="admin-form-group">
+                        <label for="product-sizes">Tallas</label>
+                        <input
+                            type="text"
+                            id="product-sizes"
+                            placeholder="Ej. 29-34">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-status">Estado</label>
+
+                        <select id="product-status" required>
+                            <option value="nuevo">Nuevo</option>
+                            <option value="actualizado">Actualizado</option>
+                            <option value="normal" selected>Normal</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-description">Descripción</label>
+                        <textarea
+                            id="product-description"
+                            rows="4"
+                            placeholder="Descripción del producto..."></textarea>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-image">Fotografía del producto</label>
+
+                        <input
+                            type="file"
+                            id="product-image"
+                            accept="image/jpeg,image/png,image/webp"
+                            required>
+                        
+                        <small>Formatos JPG, PNG y WebP. Máximo 5 MB.</small>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" id="save-product">
+                            Guardar producto
+                        </button>
+
+                        <button type="button" id="cancel-form">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- LISTADO DE PRODUCTOS -->
+
+            <section class="admin-products-section">
+
+                <h2>Productos registrados</h2>
+
+                <div id="products-list">
+                    <p>Cargando productos...</p>
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="admin.js"></script>
+
+</body>
+</html>

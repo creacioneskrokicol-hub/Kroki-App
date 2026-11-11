@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso administrativo | KROKI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="login-container">
+        <section class="login-card">
+
+            <h1>KROKICOL</h1>
+            <p>Acceso administrativo</p>
+
+            <form id="login-form">
+                <label for="email">Correo electrónico</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Ingresa tu correo"
+                    required
+                >
+
+                <label for="password">Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingresa tu contraseña"
+                    required
+                >
+
+                <button type="submit" id="login-button">
+                    Iniciar sesión
+                </button>
+
+                <p id="login-message" role="alert"></p>
+            </form>
+
+            <a href="index.html">Volver al catálogo</a>
+
+        </section>
+    </main>
+
+    <script type="module" src="login.js"></script>
+
+</body>
+</html>
