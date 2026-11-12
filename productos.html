@@ -320,9 +320,26 @@ const descripciones = {
     hombre: "Descubre nuestra colección para hombre."
 };
 
+
+document.getElementById("category-title").textContent =
+    nombresCategorias[categoria];
+
+document.getElementById("category-description").textContent =
+    descripciones[categoria];
+
+document.querySelectorAll(".category-buttons a").forEach(boton => {
+    boton.classList.toggle(
+        "active",
+        boton.dataset.category === categoria
+    );
+});
+
+
+
 /* =========================
    CONSULTAR SUPABASE
 ========================= */
+
 
 track.textContent = "Cargando productos...";
 
@@ -330,7 +347,10 @@ const { data: productosBD, error } = await supabase
     .from("productos")
     .select("*")
     .eq("activo", true)
-    .order("orden_catalogo", { ascending: true });
+    .eq("categoria", categoria)
+    .order("orden_catalogo", { ascending: true })
+    .abortSignal(AbortSignal.timeout(15000));
+
 
 if (error) {
     console.error("Error al cargar productos:", error);
@@ -342,12 +362,12 @@ if (error) {
    FILTRAR CATEGORÍA
 ========================= */
 
-const listaProductos = productosBD
-    .filter(producto => producto.categoria === categoria)
-    .map(producto => ({
-        ...producto,
-        referencia: `Pagina-${producto.orden_catalogo}`
-    }));
+
+const listaProductos = productosBD.map(producto => ({
+    ...producto,
+    referencia: `Pagina-${producto.orden_catalogo}`
+}));
+
 
 if (listaProductos.length === 0) {
     track.textContent = "No hay productos disponibles en esta categoría.";
@@ -364,10 +384,7 @@ document.body.classList.add("categoria-cuadricula");
            TÍTULO
         ================================================= */
 
-        document.getElementById(
-            "category-title"
-        ).textContent =
-            nombresCategorias[categoria];
+
 
 
         document.getElementById(
