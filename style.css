@@ -1606,21 +1606,24 @@ body#productos-page {
    FLECHAS DEL ZOOM
 ========================================= */
 
+
+
 .zoom-arrow {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: auto;
+bottom: 45px;
+transform: none;
 
-    width: 55px;
-    height: 55px;
+    width: 40px;
+    height: 40px;
 
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 50%;
 
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.25);
     color: white;
 
-    font-size: 42px;
+    font-size: 32px;
     line-height: 1;
 
     display: flex;
@@ -1628,25 +1631,28 @@ body#productos-page {
     justify-content: center;
 
     cursor: pointer;
-
     z-index: 20;
 
-    transition: transform 0.2s ease,
-                background 0.2s ease;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
 }
 
 .zoom-arrow:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translateY(-50%) scale(1.08);
+    background: rgba(0, 0, 0, 0.55);
+    transform: scale(1.06);
 }
 
+
+
+
 .zoom-prev {
-    left: 20px;
+    left: 12px;
 }
 
 .zoom-next {
-    right: 20px;
+    right: 12px;
 }
+
 
 
 .zoom-content:active {
