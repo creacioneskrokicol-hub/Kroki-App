@@ -4,23 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso administrativo | KROKI</title>
+    <title>Acceso administrativo | KROKICOL</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="login-page">
 
     <main class="login-container">
         <section class="login-card">
 
-            <h1>KROKICOL</h1>
-            <p>Acceso administrativo</p>
+            <div class="login-brand">
+    <h1>KROKICOL</h1>
+</div>
+
+            <div class="login-heading">
+                <h2>¡Bienvenido!</h2>
+                <p>Ingresa tus datos para continuar.</p>
+            </div>
 
             <form id="login-form">
-                <label for="email">Correo electrónico</label>
+
+                <label for="email">Usuario</label>
                 <input
                     type="email"
                     id="email"
-                    placeholder="Ingresa tu correo"
+                    placeholder="Ingresa tu usuario"
+                    autocomplete="username"
                     required
                 >
 
@@ -29,6 +37,7 @@
                     type="password"
                     id="password"
                     placeholder="Ingresa tu contraseña"
+                    autocomplete="current-password"
                     required
                 >
 
@@ -37,9 +46,16 @@
                 </button>
 
                 <p id="login-message" role="alert"></p>
+
             </form>
 
-            <a href="index.html">Volver al catálogo</a>
+            <a href="index.html" class="login-back">
+                ← Volver al catálogo
+            </a>
+
+            <p class="login-footer">
+                Acceso exclusivo para personal autorizado
+            </p>
 
         </section>
     </main>

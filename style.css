@@ -3670,3 +3670,235 @@ body.categoria-cuadricula .dots {
         flex: 1;
     }
 }
+
+
+/* =================================
+   ACCESO ADMINISTRATIVO KROKICOL
+================================= */
+
+#login-page {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #172B91, #079FD0);
+    font-family: 'Poppins', sans-serif;
+}
+
+#login-page .login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+#login-page .login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 35px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+}
+
+#login-page .login-brand {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#login-page .login-brand h1 {
+    margin: 0;
+    color: #172B91;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+#login-page .login-brand span {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 7px 15px;
+    border-radius: 20px;
+    background: #E5F5FA;
+    color: #079FD0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+#login-page .login-heading h2 {
+    margin: 0 0 8px;
+    color: #172B91;
+    font-size: 25px;
+}
+
+#login-page .login-heading p {
+    margin: 0 0 25px;
+    color: #777777;
+    font-size: 14px;
+}
+
+#login-page #login-form label {
+    display: block;
+    margin: 17px 0 8px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#login-page #login-form input {
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    border: 1px solid #D9E1EA;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    background: #F8FAFC;
+}
+
+#login-page #login-form input:focus {
+    border-color: #079FD0;
+    box-shadow: 0 0 0 3px rgba(7, 159, 208, 0.12);
+}
+
+#login-page #login-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #172B91;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#login-page #login-button:hover {
+    background: #079FD0;
+}
+
+#login-page .login-back {
+    display: block;
+    margin-top: 22px;
+    text-align: center;
+    color: #172B91;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#login-page .login-footer {
+    margin: 28px 0 0;
+    text-align: center;
+    color: #999999;
+    font-size: 11px;
+}
+
+#login-page #login-message {
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 480px) {
+    #login-page .login-card {
+        padding: 32px 24px;
+    }
+
+    #login-page .login-brand h1 {
+        font-size: 33px;
+    }
+}
+
+
+/* REDES SOCIALES - USUARIOS */
+
+.social-icons .social-hint {
+    font-size: 12px;
+    color: #65758B;
+    margin: -8px 0 12px;
+}
+
+.social-icons .social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #172B91;
+    font-size: 11px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.social-icons .social-link img {
+    display: block;
+}
+
+.social-icons .social-link:hover {
+    transform: translateY(-4px);
+}
+
+.social-icons .social-link span {
+    white-space: nowrap;
+}
+
+
+/* REDES SOCIALES - DISTRIBUCIÓN RESPONSIVE */
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    align-items: start;
+    gap: 18px 12px;
+    width: 100%;
+}
+
+.social-icons .social-title,
+.social-icons .social-hint {
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+}
+
+.social-icons .social-hint {
+    margin: -8px 0 5px;
+}
+
+.social-icons .social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: center;
+    min-width: 0;
+}
+
+.social-icons .social-link img {
+    max-width: 65px;
+    height: auto;
+}
+
+.social-icons .social-link span {
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .social-icons {
+        gap: 16px 8px;
+    }
+
+    .social-icons .social-link img {
+        max-width: 58px;
+    }
+
+    .social-icons .social-link span {
+        font-size: 10px;
+    }
+}
