@@ -631,61 +631,24 @@ window.temporizadorPistaKroki = setTimeout(() => {
 
 }
 
+
 function obtenerAlbumActual() {
 
-    const producto =
-        listaProductos[productoActual];
+    const producto = listaProductos[productoActual];
 
-    const nombreArchivo =
-        producto.imagen
-            .split("/")
-            .pop()
-            .replace(/\.[^/.]+$/, "");
+    if (!producto) return [];
 
-    const albumes = {
-        
-        
-        "5": ["A", "B", "C", "D"],
-        "207": ["A", "B", "C", "D"],
-        "303": ["A", "B", "C", "D"],
-        "315": ["A", "B", "C", "D"],
-        "322": ["A"],
-        "323": ["A"],
-        "324": ["A"],
-        "327": ["A"],
-        "328": ["A"],
-        "333": ["A"],
-        "329": ["A", "B", "C", "D"],
-        "330": ["A", "B"],
-        "338": ["A", "B", "C", "D"],
-        "410": ["A"],
-        "411": ["A"],
-        "412": ["A"],
-        "416": ["A"],
-        "417": ["A"],
-        "333": ["A"],
-        "419": ["A", "B", "C", "D"],
-        "424": ["A", "B", "C", "D"],
-
-    };
-
-    if (!albumes[nombreArchivo]) {
-
-        return [
-            producto.imagen
-        ];
-
-    }
+    const albumes = producto.albumes || {};
 
     return [
         producto.imagen,
-        ...albumes[nombreArchivo].map(
-            letra =>
-                `images/${nombreArchivo}${letra}.webp`
-        )
+        ...["A", "B", "C", "D"]
+            .filter(letra => albumes[letra])
+            .map(letra => albumes[letra])
     ];
 
 }
+
 
 
 function actualizarVistasLaterales() {

@@ -360,6 +360,49 @@ async function eliminarProducto(producto, boton) {
     }
 }
 
+
+
+async function actualizarEstadoProducto(producto, nuevoEstado, selector) {
+    const estadosPermitidos = ["normal", "nuevo", "actualizado"];
+
+    if (!estadosPermitidos.includes(nuevoEstado)) {
+        mostrarMensaje("Selecciona un estado válido.", true);
+        selector.value = producto.estado || "normal";
+        return;
+    }
+
+    selector.disabled = true;
+
+    try {
+        const { error } = await supabase
+            .from("productos")
+            .update({ estado: nuevoEstado })
+            .eq("id", producto.id);
+
+        if (error) throw error;
+
+        producto.estado = nuevoEstado;
+
+        mostrarMensaje(
+            `Estado de ${producto.referencia} actualizado correctamente.`
+        );
+
+    } catch (error) {
+        console.error(error);
+
+        mostrarMensaje(
+            `No se pudo actualizar el estado: ${error.message}`,
+            true
+        );
+
+        selector.value = producto.estado || "normal";
+
+    } finally {
+        selector.disabled = false;
+    }
+}
+
+
 // =====================================
 // CARGAR PRODUCTOS
 // =====================================
@@ -411,6 +454,56 @@ async function cargarProductos() {
         estado.textContent =
             `Estado: ${producto.estado || "normal"}`;
 
+
+const estadoContenedor = document.createElement("label");
+
+estadoContenedor.textContent = "Estado: ";
+
+estadoContenedor.style.cssText = `
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    font-weight: 600;
+`;
+
+const selectorEstado = document.createElement("select");
+
+[
+    { value: "normal", label: "Normal" },
+    { value: "nuevo", label: "Nuevo" },
+    { value: "actualizado", label: "Actualizado" }
+].forEach(opcion => {
+    const option = document.createElement("option");
+    option.value = opcion.value;
+    option.textContent = opcion.label;
+    selectorEstado.appendChild(option);
+});
+
+selectorEstado.value = ["normal", "nuevo", "actualizado"].includes(
+    producto.estado
+) ? producto.estado : "normal";
+
+selectorEstado.style.cssText = `
+    padding: 7px 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: white;
+    color: #222;
+`;
+
+selectorEstado.addEventListener("change", () => {
+    actualizarEstadoProducto(
+        producto,
+        selectorEstado.value,
+        selectorEstado
+    );
+});
+
+estadoContenedor.appendChild(selectorEstado);
+
+
+
         const cardStatus = document.createElement("p");
         cardStatus.textContent =
             producto.activo ? "Activo" : "Inactivo";
@@ -453,16 +546,16 @@ async function cargarProductos() {
         botonEliminar.style.marginTop = "15px";
 
         card.append(
-            nombre,
-            referencia,
-            categoria,
-            posicion,
-            tallas,
-            estado,
-            cardStatus,
-            controles,
-            botonEliminar
-        );
+    nombre,
+    referencia,
+    categoria,
+    posicion,
+    tallas,
+    estadoContenedor,
+    cardStatus,
+    controles,
+    botonEliminar
+);
 
         productsList.appendChild(card);
     });
