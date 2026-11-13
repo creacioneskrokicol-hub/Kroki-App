@@ -537,8 +537,21 @@
 <script src="productos.js"></script>
 <script src="app.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+
+<script type="module">
+import { supabase } from "./supabase.js";
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const { data: productos, error } = await supabase
+        .from("productos")
+        .select("categoria, estado")
+        .eq("activo", true);
+
+    if (error) {
+        console.error("Error al consultar estados:", error);
+        return;
+    }
 
     document.querySelectorAll(".category").forEach(categoria => {
 
@@ -547,17 +560,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!coincidencia) return;
 
-        const nombreCategoria = coincidencia[1];
-        const productosCategoria = productos[nombreCategoria];
+        const nombreCategoria = coincidencia[1].toLowerCase();
 
-        if (!productosCategoria) return;
+        const productosCategoria = productos.filter(
+            producto =>
+                (producto.categoria || "").toLowerCase() === nombreCategoria
+        );
 
         const cantidadNuevos = productosCategoria.filter(
-            producto => producto.estado === "NUEVO"
+            producto => (producto.estado || "").toLowerCase() === "nuevo"
         ).length;
 
         const cantidadActualizados = productosCategoria.filter(
-            producto => producto.estado === "ACTUALIZADO"
+            producto => (producto.estado || "").toLowerCase() === "actualizado"
         ).length;
 
         let indicador = categoria.querySelector(".category-news");
@@ -575,35 +590,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         indicador.innerHTML = "";
 
-        
+        if (cantidadNuevos > 0) {
 
+            const filaNuevos = document.createElement("div");
+            filaNuevos.className = "fila-nuevos";
 
+            const sorpresa = document.createElement("img");
+            sorpresa.src = "./images/SORP.webp";
+            sorpresa.alt = "Nuevos productos";
+            sorpresa.className = "icono-sorp";
 
-if (cantidadNuevos > 0) {
-    const filaNuevos = document.createElement("div");
-    filaNuevos.className = "fila-nuevos";
+            const nuevo = document.createElement("span");
+            nuevo.className = "nuevo-con-sorpresa";
 
-    const sorpresa = document.createElement("img");
-    sorpresa.src = "./images/SORP.webp";
-    sorpresa.alt = "Nuevos productos";
-    sorpresa.className = "icono-sorp";
+            nuevo.innerHTML = `
+                <span class="status-dot nuevo"></span>
+                <span>${cantidadNuevos} ${cantidadNuevos === 1 ? "NUEVO" : "NUEVOS"}</span>
+            `;
 
-    const nuevo = document.createElement("span");
-    nuevo.className = "nuevo-con-sorpresa";
-
-    nuevo.innerHTML = `
-        <span class="status-dot nuevo"></span>
-        <span>${cantidadNuevos} ${cantidadNuevos === 1 ? "NUEVO" : "NUEVOS"}</span>
-    `;
-
-    filaNuevos.appendChild(sorpresa);
-    filaNuevos.appendChild(nuevo);
-    indicador.appendChild(filaNuevos);
-}
-
-
-
-
+            filaNuevos.appendChild(sorpresa);
+            filaNuevos.appendChild(nuevo);
+            indicador.appendChild(filaNuevos);
+        }
 
         if (cantidadActualizados > 0) {
 
@@ -621,6 +629,7 @@ if (cantidadNuevos > 0) {
 
 });
 </script>
+
 
 <script>
 window.addEventListener("load", function () {
