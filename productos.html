@@ -651,22 +651,45 @@ function obtenerAlbumActual() {
 
 
 
+
 function actualizarVistasLaterales() {
     const album = obtenerAlbumActual();
-
     const total = album.length;
+
+    const zoomHint = document.getElementById("zoom-hint");
+    const hintArrows = zoomHint.querySelector(".zoom-hint-arrows");
+    const hintText = zoomHint.querySelector("span:last-child");
+
+    const flechas = document.querySelectorAll(".zoom-arrow");
 
     if (total <= 1) {
         zoomPreviewLeft.style.display = "none";
         zoomPreviewRight.style.display = "none";
+
+        // Ocultar flechas de navegación
+        flechas.forEach(flecha => {
+            flecha.style.display = "none";
+        });
+
+        // Cambiar mensaje
+        hintArrows.style.display = "none";
+        hintText.textContent = "Pronto agregaremos más fotos";
+
+        zoomHint.style.display = "block";
+
         return;
     }
 
-    const anterior =
-        (fotoAlbumActual - 1 + total) % total;
+    // Restaurar navegación cuando hay más fotografías
+    flechas.forEach(flecha => {
+        flecha.style.display = "";
+    });
 
-    const siguiente =
-        (fotoAlbumActual + 1) % total;
+    hintArrows.style.display = "";
+    hintText.textContent = "Desliza para ver más fotos";
+
+    const anterior = (fotoAlbumActual - 1 + total) % total;
+    const siguiente = (fotoAlbumActual + 1) % total;
 
     zoomPreviewLeft.src = album[anterior];
     zoomPreviewRight.src = album[siguiente];
@@ -674,6 +697,7 @@ function actualizarVistasLaterales() {
     zoomPreviewLeft.style.display = "";
     zoomPreviewRight.style.display = "";
 }
+
 
 
 
